@@ -16,6 +16,7 @@ At the moment, the program implements this:
 <li>Image zoom changes (Only for image editing in the editor, the image itself is saved in its original resolution)
 <li>Adaptive interface
 <li>Other little things that make the program more pleasant to use
+<li>Keyboard shortcut ctrl+z
 </ul>
   
 You can read more about the work of the program in the program itself, as well as by watching this video:
