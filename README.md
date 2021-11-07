@@ -24,3 +24,4 @@ You can read more about the work of the program in the program itself, as well a
 <video src="https://user-images.githubusercontent.com/74132592/140648787-9ca97d71-ca0c-4177-8583-fe1f94d3b2d5.mp4" name="ss">
 
 
+<a href="https://disk.yandex.ru/d/ymALxUMxCsTDEQ">Download the program</a>
