@@ -1,7 +1,7 @@
 
 # Manga-Translator
-[English](https://github.com/AntonRls/Manga-Translator/blob/main/README.md)
-Используя Manga Translator, вы можете в два клика переводить мангу <a href="https://disk.yandex.ru/d/405kyS7rO1YVMQ">Скачать программу</a>
+[English](https://github.com/AntonRls/Manga-Translator/blob/main/README.md)<br>
+Используя Manga Translator, вы можете в два клика переводить мангу. <a href="https://disk.yandex.ru/d/405kyS7rO1YVMQ">Скачать программу</a>
 <hr/>
 <img src="https://user-images.githubusercontent.com/74132592/140647403-7c8b03ac-a81f-4927-8334-e4dcf6ea81d3.png">
 <br>
