@@ -1,5 +1,6 @@
 
 # Manga-Translator
+<a href="https://github.com/AntonRls/Manga-Translator/blob/main/README_RU.md">Russia</a><br>
 Use Manga Translator, you can translate manga from one language to another in a few clicks! <a href="https://disk.yandex.ru/d/405kyS7rO1YVMQ">Download the program</a>
 <hr/>
 <img src="https://user-images.githubusercontent.com/74132592/140647403-7c8b03ac-a81f-4927-8334-e4dcf6ea81d3.png">
