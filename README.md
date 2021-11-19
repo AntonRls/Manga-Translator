@@ -1,7 +1,7 @@
 
 # Manga-Translator
 
-[<img src="https://img.shields.io/badge/Russia-RU-blue">](https://github.com/AntonRls/Manga-Translator/blob/main/README_RU.md)
+[<img src="https://img.shields.io/badge/RU-Russia-blue">](https://github.com/AntonRls/Manga-Translator/blob/main/README_RU.md)
 <br>
 <br>
 Use Manga Translator, you can translate manga from one language to another in a few clicks! <a href="https://disk.yandex.ru/d/405kyS7rO1YVMQ">Download the program</a>
