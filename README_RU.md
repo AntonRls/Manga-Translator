@@ -25,7 +25,6 @@
 
 <video src="https://user-images.githubusercontent.com/74132592/140648787-9ca97d71-ca0c-4177-8583-fe1f94d3b2d5.mp4" ></video>
  <br>
- **ИСПОЛЬЗОВАНИЕ КОДА РАЗРЕШЕНО ТОЛЬКО В НЕКОММЕРЧЕСКИХ ЦЕЛЯХ**
 <br>**Проект создан в Microsoft Visual Studio Community 2019
 Version 16.11.1**
 
