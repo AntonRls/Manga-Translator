@@ -1,22 +1,14 @@
-﻿
-using GoogleTranslateFreeApi;
+﻿using GoogleTranslateFreeApi;
 using IronOcr;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Tesseract;
 
 namespace mangaTranslator
 {
@@ -25,7 +17,7 @@ namespace mangaTranslator
         public Form1()
         {
             InitializeComponent();
-            //tools panel
+   
             button4.BackColor = Color.White;
             button3.BackColor = Color.Gray;
 
@@ -59,7 +51,7 @@ namespace mangaTranslator
 
 
 
-        private string getText(Image imgsource)
+        private async Task<string> GetText(Image imgsource)
         {
             try
             {
@@ -80,7 +72,7 @@ namespace mangaTranslator
                     //  Input.Deskew();  // use if image not straight
                     //   Input.DeNoise(); // use if image contains digital noise
 
-                    var Result = Ocr.Read(Input);
+                    var Result = await Ocr.ReadAsync(Input);
 
                     return Result.Text;
                 }
@@ -141,7 +133,7 @@ namespace mangaTranslator
 
                     cloneRect.Intersect(new Rectangle(cloneRect.X, cloneRect.Y, mangaPicture.Width, mangaPicture.Height));
 
-                    Image img = (Bitmap)CropImage(new Bitmap(mangaPicture.Image, mangaPicture.Size), cloneRect);
+                    Image img = CropImage(new Bitmap(mangaPicture.Image, mangaPicture.Size), cloneRect);
                     imgCroped = img;
                     pictureBox1.Image = img;
 
@@ -178,7 +170,7 @@ namespace mangaTranslator
             {
                 Bitmap bmpImage = new Bitmap(img);
                 Bitmap bmpCrop = bmpImage.Clone(cropArea, bmpImage.PixelFormat);
-                return (Image)(bmpCrop);
+                return bmpCrop;
             }
             catch (Exception ex)
             {
@@ -246,15 +238,16 @@ namespace mangaTranslator
         //end crop image
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            translate();
+            Translate();
         }
-        private async Task<string> translate()
+        private async void Translate()
         {
             if (Properties.Settings.Default.scaningImage)
             {
-                string text = getText(imgCroped).Replace(Environment.NewLine, "");
+                string text = await GetText(imgCroped);
+                text = text.Replace(Environment.NewLine, "");
                 if (text != "error")
                 {
                     label1.Text = text;
@@ -281,10 +274,8 @@ namespace mangaTranslator
                     }
                 }
             }
-            updateFontSettings();
+            UpdateFontSettings();
             mangaPicture.Image = bmp;
-
-            return null;
             
         }
    
@@ -297,17 +288,18 @@ namespace mangaTranslator
         FontStyle fs = FontStyle.Regular;
         private void label1_TextChanged(object sender, EventArgs e)
         {
-            updateFontSettings();
+            UpdateFontSettings();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            updateFontSettings();
+            UpdateFontSettings();
         }
 
 
 
-        private void updateFontSettings()
+        private string CurrentFont = "AnimeAce.ttf";
+        private void UpdateFontSettings()
         {
             try
             {
@@ -336,7 +328,7 @@ namespace mangaTranslator
                 }
 
                 PrivateFontCollection font1 = new PrivateFontCollection();
-                font1.AddFontFile("AnimeAce.ttf");
+                font1.AddFontFile(CurrentFont);
                 Font font = new Font(font1.Families[0], (float)numericUpDown1.Value, fs);
                 StringFormat sf = new StringFormat();
                 sf.LineAlignment = StringAlignment.Center;
@@ -391,32 +383,32 @@ namespace mangaTranslator
             if (comboBox1.SelectedIndex == 2)
             {
                 fs = FontStyle.Regular;
-                updateFontSettings();
+                UpdateFontSettings();
             }
             else if (comboBox1.SelectedIndex == 0)
             {
                 fs = FontStyle.Bold;
-                updateFontSettings();
+                UpdateFontSettings();
             }
             else if (comboBox1.SelectedIndex == 1)
             {
                 fs = FontStyle.Italic;
-                updateFontSettings();
+                UpdateFontSettings();
             }
             else if (comboBox1.SelectedIndex == 3)
             {
                 fs = FontStyle.Strikeout;
-                updateFontSettings();
+                UpdateFontSettings();
             }
             else if (comboBox1.SelectedIndex == 4)
             {
                 fs = FontStyle.Underline;
-                updateFontSettings();
+                UpdateFontSettings();
             }
             else
             {
                 fs = FontStyle.Regular;
-                updateFontSettings();
+                UpdateFontSettings();
             }
         }
         Tools currentTool = Tools.Rectangle;
@@ -673,7 +665,7 @@ namespace mangaTranslator
             {
                 fontColor = cd.Color;
                 pictureBox2.BackColor = fontColor;
-                updateFontSettings();
+                UpdateFontSettings();
             }
         }
 
@@ -687,12 +679,12 @@ namespace mangaTranslator
             {
                 backColor = cd.Color;
                 pictureBox3.BackColor = backColor;
-                updateFontSettings();
+                UpdateFontSettings();
             }
         }
 
 
-        void translateProgramInterface()
+        void TranslateProgramInterface()
         {
             if (Properties.Settings.Default.languageProgramm == "en")
             {
@@ -728,12 +720,34 @@ namespace mangaTranslator
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new settingForm().ShowDialog();
-            translateProgramInterface();
+            TranslateProgramInterface();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            translateProgramInterface();
+            TranslateProgramInterface();
+            CurrentFont = Properties.Settings.Default.CurrentFont;
+        }
+
+        private void changeFontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (Properties.Settings.Default.languageProgramm == "ru")
+            {
+                openFileDialog.Title = "Выберите шрифт";
+            }
+            else if(Properties.Settings.Default.languageProgramm == "en")
+            {
+                openFileDialog.Title = "Select font";
+            }
+            openFileDialog.Filter = "Font file|*.ttf|Font file|*.otf";
+            openFileDialog.Multiselect = false;
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                CurrentFont = openFileDialog.FileName;
+                Properties.Settings.Default.CurrentFont = CurrentFont;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

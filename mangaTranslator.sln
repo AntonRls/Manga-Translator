@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mangaTranslator", "mangaTranslator\mangaTranslator.csproj", "{A1F5F879-0150-49FD-8445-EF7D691E3C88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1F5F879-0150-49FD-8445-EF7D691E3C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F5F879-0150-49FD-8445-EF7D691E3C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F5F879-0150-49FD-8445-EF7D691E3C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F5F879-0150-49FD-8445-EF7D691E3C88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B49DF97B-4A39-47DF-9F3B-A203F84F9638}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "default",
+      "verify": [
+      ],
+      "install": [
+      ],
+      "runtime": [
+      ]
+    }
+  ]
+}

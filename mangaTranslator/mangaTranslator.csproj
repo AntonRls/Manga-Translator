@@ -38,11 +38,11 @@
     <Reference Include="GoogleTranslateFreeApi, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Wadereye.GoogleTranslateFreeApi.1.3.0\lib\netstandard2.0\GoogleTranslateFreeApi.dll</HintPath>
     </Reference>
-    <Reference Include="IronOcr, Version=2021.11.0.0, Culture=neutral, PublicKeyToken=c2cbcea5ea3f6d8d, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronOcr.2021.11.0\lib\net40\IronOcr.dll</HintPath>
+    <Reference Include="IronOcr, Version=2022.8.0.7804, Culture=neutral, PublicKeyToken=c2cbcea5ea3f6d8d, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronOcr.2022.8.7804\lib\net40\IronOcr.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -150,6 +150,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Tesseract.4.1.1\build\Tesseract.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tesseract.4.1.1\build\Tesseract.targets'))" />
     <Error Condition="!Exists('..\packages\IronOcr.Languages.Japanese.2020.11.2\build\IronOcr.Languages.Japanese.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronOcr.Languages.Japanese.2020.11.2\build\IronOcr.Languages.Japanese.targets'))" />
+    <Error Condition="!Exists('..\packages\IronOcr.2022.8.7804\build\net452\IronOcr.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronOcr.2022.8.7804\build\net452\IronOcr.targets'))" />
   </Target>
   <Import Project="..\packages\IronOcr.Languages.Japanese.2020.11.2\build\IronOcr.Languages.Japanese.targets" Condition="Exists('..\packages\IronOcr.Languages.Japanese.2020.11.2\build\IronOcr.Languages.Japanese.targets')" />
+  <Import Project="..\packages\IronOcr.2022.8.7804\build\net452\IronOcr.targets" Condition="Exists('..\packages\IronOcr.2022.8.7804\build\net452\IronOcr.targets')" />
 </Project>

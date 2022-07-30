@@ -82,5 +82,29 @@ namespace mangaTranslator.Properties {
                 this["languageProgramm"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AnimeAce.ttf")]
+        public string CurrentFont {
+            get {
+                return ((string)(this["CurrentFont"]));
+            }
+            set {
+                this["CurrentFont"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("google")]
+        public string TrasnlationService {
+            get {
+                return ((string)(this["TrasnlationService"]));
+            }
+            set {
+                this["TrasnlationService"] = value;
+            }
+        }
     }
 }

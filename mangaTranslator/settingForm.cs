@@ -90,8 +90,8 @@ namespace mangaTranslator
                 textBox4.Text = "Select the language into which the translation will be made, and write it down in this format: \"Russia, ru\", where \"Russia\" is the full name of the language from which the translation will be made, and \"ru\" is the two-letter country code";
                 checkBox1.Text = "Scanning text from an image (Translation will not work if disabled)";
                 checkBox2.Text = "Text translation";
-                textBox3.Text = "For translation, the program uses Google Translate, if you translate often, the translator can block your IP for several hours, to avoid this, use a VPN or Proxy";
-                label1.Text = "Interface language";
+                groupBox1.Text = "Translation service";
+                groupBox2.Text = "Interface language";
                 radioButton1.Text = "Russia";
                 radioButton2.Text = "English";
                 button1.Text = "Apply";
@@ -106,17 +106,41 @@ namespace mangaTranslator
                 textBox4.Text = "Выберите язык для перевода и запишите его в следующем формате: \"Russia, ru\", где \"Russia\" - полное название языка, с которого будет выполняться перевод, а \"ru\" - двухбуквенный код страны";
                 checkBox1.Text = "Сканирование текста с картинки (Если отключено, то текст не будет переводиться)";
                 checkBox2.Text = "Перевод текста";
-                textBox3.Text = "Для перевода программа использует Google Translate, если вы часто переводите, переводчик может заблокировать ваш IP на несколько часов, чтобы избежать этого, используйте VPN или прокси";
-                label1.Text = "Язык интерфейса";
+                groupBox1.Text = "Сервис для перевода";
+                groupBox2.Text = "Язык интерфейсаа";
                 radioButton1.Text = "Русский";
                 radioButton2.Text = "Английский";
                 button1.Text = "Применить";
             }
+         
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                Properties.Settings.Default.TrasnlationService = "yandex";
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                Properties.Settings.Default.TrasnlationService = "google";
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }
