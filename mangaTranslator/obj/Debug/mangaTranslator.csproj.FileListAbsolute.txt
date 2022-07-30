@@ -282,7 +282,6 @@ C:\Manga-Translator\mangaTranslator\bin\Debug\Newtonsoft.Json.dll
 C:\Manga-Translator\mangaTranslator\bin\Debug\Tesseract.dll
 C:\Manga-Translator\mangaTranslator\bin\Debug\GoogleTranslateFreeApi.xml
 C:\Manga-Translator\mangaTranslator\bin\Debug\Newtonsoft.Json.xml
-C:\Manga-Translator\mangaTranslator\bin\Debug\utils.pdb
 C:\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.csproj.AssemblyReference.cache
 C:\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.Form1.resources
 C:\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.Properties.Resources.resources
