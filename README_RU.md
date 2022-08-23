@@ -23,7 +23,9 @@
 
 Вы можете более детально узнать о работе программы, в самой программе, а также просмотрев это видео:
 
-<video src="https://user-images.githubusercontent.com/74132592/140648787-9ca97d71-ca0c-4177-8583-fe1f94d3b2d5.mp4" ></video>
+
+https://user-images.githubusercontent.com/74132592/186102084-810bd5cc-8750-4a65-aa56-e63ca467e4be.mp4
+
  <br>
 <br>**Проект создан в Microsoft Visual Studio Community 2019
 Version 16.11.1**
