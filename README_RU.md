@@ -28,6 +28,6 @@ https://user-images.githubusercontent.com/74132592/186102084-810bd5cc-8750-4a65-
 
  <br>
 <br>
-**Проект создан в Microsoft Visual Studio Community 2019
-Version 16.11.1**
+** Проект создан в Microsoft Visual Studio Community 2019
+Version 16.11.1 **
 
