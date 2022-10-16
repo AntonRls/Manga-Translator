@@ -4,7 +4,7 @@
 [<img src="https://img.shields.io/badge/RU-Russia-blue">](https://github.com/AntonRls/Manga-Translator/blob/main/README_RU.md)
 <br>
 <br>
-Use Manga Translator, you can translate manga from one language to another in a few clicks! <a href="https://github.com/AntonRls/Manga-Translator/releases/download/Realesev1.2/MangaTranslator.rar">Download the program</a>
+Use Manga Translator, you can translate manga from one language to another in a few clicks! <a href="https://github.com/AntonRls/Manga-Translator/releases/download/Realesev1.2/MangaTranslator.zip">Download the program</a>
 <hr/>
 <img src="https://user-images.githubusercontent.com/74132592/140647403-7c8b03ac-a81f-4927-8334-e4dcf6ea81d3.png">
 <br>
