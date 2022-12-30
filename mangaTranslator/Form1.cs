@@ -104,12 +104,14 @@ namespace mangaTranslator
             isClicked = true;
         }
         Rectangle cloneRect;
+
         private void mangaPicture_MouseUp(object sender, MouseEventArgs e)
         {
             try
             {
-                float kY = originalImage.Height / mangaPicture.Image.Height;
-                float kX = originalImage.Width / mangaPicture.Image.Width;
+                float kY = float.Parse(originalImage.Height.ToString()) / float.Parse(mangaPicture.Height.ToString());
+                float kX = float.Parse(originalImage.Width.ToString()) / float.Parse(mangaPicture.Width.ToString());
+          
                 p2 = new Point(e.Location.X, e.Location.Y);
                 if (p2.X - p1.X > 5 && isClicked || p1.X - p2.X > 5 && isClicked)
                 {
@@ -130,8 +132,8 @@ namespace mangaTranslator
                         p2.Y = 5;
                     }
                     isClicked = false;
-                    p1 = new Point(int.Parse(Math.Round(p1.X * kX).ToString()), int.Parse(Math.Round(p1.Y * kY).ToString()));
-                    p2 = new Point(int.Parse(Math.Round(p2.X * kX).ToString()), int.Parse(Math.Round(p2.Y * kY).ToString()));
+                    p1 = new Point(int.Parse(Math.Round(float.Parse(p1.X.ToString())* kX).ToString()), int.Parse(Math.Round(float.Parse(p1.Y.ToString()) * kY).ToString()));
+                    p2 = new Point(int.Parse(Math.Round(float.Parse(p2.X.ToString()) * kX).ToString()), int.Parse(Math.Round(float.Parse(p2.Y.ToString()) * kY).ToString()));
                     cloneRect = GetRect(p1, p2);
 
                     cloneRect.Intersect(new Rectangle(cloneRect.X, cloneRect.Y, originalImage.Width, originalImage.Height));
@@ -167,7 +169,7 @@ namespace mangaTranslator
             }
             catch
             {
-                mangaPicture.Image = originalImage;
+                mangaPicture.Image =new Bitmap(originalImage);
             }
         }
         Bitmap bmp;
@@ -196,6 +198,7 @@ namespace mangaTranslator
         }
         private void mangaPicture_MouseMove(object sender, MouseEventArgs e)
         {
+    
             if (e.Button == MouseButtons.Left && isClicked)
             {
                 p2 = new Point(e.Location.X, e.Location.Y);
