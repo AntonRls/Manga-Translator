@@ -12,7 +12,7 @@
       <Value Profile="(Default)">none</Value>
     </Setting>
     <Setting Name="languageTranslate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Russia, ru</Value>
+      <Value Profile="(Default)">ru</Value>
     </Setting>
     <Setting Name="languageProgramm" Type="System.String" Scope="User">
       <Value Profile="(Default)">en</Value>

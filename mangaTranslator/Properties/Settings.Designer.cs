@@ -61,7 +61,7 @@ namespace mangaTranslator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Russia, ru")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ru")]
         public string languageTranslate {
             get {
                 return ((string)(this["languageTranslate"]));
