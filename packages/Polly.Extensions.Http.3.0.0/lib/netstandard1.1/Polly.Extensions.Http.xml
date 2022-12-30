@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Polly.Extensions.Http</name>
+    </assembly>
+    <members>
+        <member name="T:Polly.Extensions.Http.HttpPolicyExtensions">
+            <summary>
+            Contains opinionated convenience methods for configuring policies to handle conditions typically representing transient faults when making <see cref="T:System.Net.Http.HttpClient"/> requests.
+            </summary>
+        </member>
+        <member name="M:Polly.Extensions.Http.HttpPolicyExtensions.HandleTransientHttpError">
+            <summary>
+            Builds a <see cref="T:Polly.PolicyBuilder`1"/> to configure a <see cref="T:Polly.Policy`1"/> which will handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with conditions indicating a transient failure. 
+            <para>The conditions configured to be handled are:
+            <list type="bullet">
+            <item><description>Network failures (as <see cref="T:System.Net.Http.HttpRequestException"/>)</description></item>
+            <item><description>HTTP 5XX status codes (server errors)</description></item>
+            <item><description>HTTP 408 status code (request timeout)</description></item>
+            </list>
+            </para>
+            </summary>
+            <returns>The <see cref="T:Polly.PolicyBuilder`1"/> pre-configured to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with conditions indicating a transient failure. </returns>
+        </member>
+        <member name="M:Polly.Extensions.Http.HttpPolicyExtensions.OrTransientHttpStatusCode(Polly.PolicyBuilder)">
+            <summary>
+            Configures the <see cref="T:Polly.PolicyBuilder`1"/> to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with <see cref="T:System.Net.HttpStatusCode"/>s indicating a transient failure. 
+            <para>The <see cref="T:System.Net.HttpStatusCode"/>s configured to be handled are:
+            <list type="bullet">
+            <item><description>HTTP 5XX status codes (server errors)</description></item>
+            <item><description>HTTP 408 status code (request timeout)</description></item>
+            </list>
+            </para>
+            </summary>
+            <returns>The <see cref="T:Polly.PolicyBuilder`1"/> pre-configured to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with <see cref="T:System.Net.HttpStatusCode"/>s indicating a transient failure. </returns>
+        </member>
+        <member name="M:Polly.Extensions.Http.HttpPolicyExtensions.OrTransientHttpError(Polly.PolicyBuilder)">
+            <summary>
+            Configures the <see cref="T:Polly.PolicyBuilder`1"/> to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with conditions indicating a transient failure. 
+            <para>The conditions configured to be handled are:
+            <list type="bullet">
+            <item><description>Network failures (as <see cref="T:System.Net.Http.HttpRequestException"/>)</description></item>
+            <item><description>HTTP 5XX status codes (server errors)</description></item>
+            <item><description>HTTP 408 status code (request timeout)</description></item>
+            </list>
+            </para>
+            </summary>
+            <returns>The <see cref="T:Polly.PolicyBuilder`1"/> pre-configured to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with conditions indicating a transient failure. </returns>
+        </member>
+        <member name="M:Polly.Extensions.Http.HttpPolicyExtensions.OrTransientHttpStatusCode(Polly.PolicyBuilder{System.Net.Http.HttpResponseMessage})">
+            <summary>
+            Configures the <see cref="T:Polly.PolicyBuilder`1"/> to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with <see cref="T:System.Net.HttpStatusCode"/>s indicating a transient failure. 
+            <para>The <see cref="T:System.Net.HttpStatusCode"/>s configured to be handled are:
+            <list type="bullet">
+            <item><description>HTTP 5XX status codes (server errors)</description></item>
+            <item><description>HTTP 408 status code (request timeout)</description></item>
+            </list>
+            </para>
+            </summary>
+            <returns>The <see cref="T:Polly.PolicyBuilder`1"/> pre-configured to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with <see cref="T:System.Net.HttpStatusCode"/>s indicating a transient failure. </returns>
+        </member>
+        <member name="M:Polly.Extensions.Http.HttpPolicyExtensions.OrTransientHttpError(Polly.PolicyBuilder{System.Net.Http.HttpResponseMessage})">
+            <summary>
+            Configures the <see cref="T:Polly.PolicyBuilder`1"/> to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with conditions indicating a transient failure. 
+            <para>The conditions configured to be handled are:
+            <list type="bullet">
+            <item><description>Network failures (as <see cref="T:System.Net.Http.HttpRequestException"/>)</description></item>
+            <item><description>HTTP 5XX status codes (server errors)</description></item>
+            <item><description>HTTP 408 status code (request timeout)</description></item>
+            </list>
+            </para>
+            </summary>
+            <returns>The <see cref="T:Polly.PolicyBuilder`1"/> pre-configured to handle <see cref="T:System.Net.Http.HttpClient"/> requests that fail with conditions indicating a transient failure. </returns>
+        </member>
+    </members>
+</doc>

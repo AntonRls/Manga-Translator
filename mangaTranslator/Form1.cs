@@ -1,5 +1,4 @@
-﻿using GoogleTranslateFreeApi;
-using IronOcr;
+﻿using IronOcr;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -56,7 +55,7 @@ namespace mangaTranslator
             try
             {
                 var Ocr = new IronTesseract();
-                Ocr.Configuration.TesseractVersion = TesseractVersion.Tesseract5;
+               // Ocr.Configuration.TesseractVersion = TesseractVersion.Tesseract5;
                 IronOcr.Installation.LicenseKey = Properties.Settings.Default.licenseKey; 
                 using (var Input = new OcrInput())
                 {
@@ -109,6 +108,8 @@ namespace mangaTranslator
         {
             try
             {
+                float kY = originalImage.Height / mangaPicture.Image.Height;
+                float kX = originalImage.Width / mangaPicture.Image.Width;
                 p2 = new Point(e.Location.X, e.Location.Y);
                 if (p2.X - p1.X > 5 && isClicked || p1.X - p2.X > 5 && isClicked)
                 {
@@ -129,13 +130,18 @@ namespace mangaTranslator
                         p2.Y = 5;
                     }
                     isClicked = false;
+                    p1 = new Point(int.Parse(Math.Round(p1.X * kX).ToString()), int.Parse(Math.Round(p1.Y * kY).ToString()));
+                    p2 = new Point(int.Parse(Math.Round(p2.X * kX).ToString()), int.Parse(Math.Round(p2.Y * kY).ToString()));
                     cloneRect = GetRect(p1, p2);
 
-                    cloneRect.Intersect(new Rectangle(cloneRect.X, cloneRect.Y, mangaPicture.Width, mangaPicture.Height));
+                    cloneRect.Intersect(new Rectangle(cloneRect.X, cloneRect.Y, originalImage.Width, originalImage.Height));
 
-                    Image img = CropImage(new Bitmap(mangaPicture.Image, mangaPicture.Size), cloneRect);
+                    Image img = CropImage(new Bitmap(originalImage, originalImage.Size), cloneRect);
                     imgCroped = img;
                     pictureBox1.Image = img;
+                    p1 = new Point(int.Parse(Math.Round(p1.X / kX).ToString()), int.Parse(Math.Round(p1.Y / kY).ToString()));
+                    p2 = new Point(int.Parse(Math.Round(p2.X / kX).ToString()), int.Parse(Math.Round(p2.Y / kY).ToString()));
+                    cloneRect = GetRect(p1, p2);
 
                     bmp = new Bitmap(mangaPicture.Image, mangaPicture.ClientSize.Width, mangaPicture.ClientSize.Height);
                     Graphics gr = Graphics.FromImage(bmp);
@@ -157,6 +163,7 @@ namespace mangaTranslator
                     mangaPicture.Image = bmp;
                 
                 }
+
             }
             catch
             {
@@ -172,7 +179,7 @@ namespace mangaTranslator
                 Bitmap bmpCrop = bmpImage.Clone(cropArea, bmpImage.PixelFormat);
                 return bmpCrop;
             }
-            catch (Exception ex)
+            catch
             {
 
             }
@@ -238,7 +245,7 @@ namespace mangaTranslator
         //end crop image
 
 
-        private async void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             Translate();
         }
@@ -261,16 +268,15 @@ namespace mangaTranslator
                         {
                             label1.Text = "Идёт перевод перевод...";
                         }
-                        var translator = new GoogleTranslator();
+                        var translator = new Translator();
 
-                        Language from = GoogleTranslator.GetLanguageByName("Japanese");
-                        string[] toLan = Properties.Settings.Default.languageTranslate.Replace(" ", "").Split(',');
-                        Language to = new Language(toLan[0], toLan[1]);
+                        string from = "ja";
+                        string to = Properties.Settings.Default.languageTranslate;
+ 
+                        string result = await translator.TranslateAsync(text, from, to);
+                  
 
-                        TranslationResult result = await translator.TranslateLiteAsync(text, from, to);
-
-
-                        label1.Text = result.MergedTranslation;
+                       label1.Text = result;
                     }
                 }
             }
@@ -625,9 +631,9 @@ namespace mangaTranslator
         }
         private Bitmap ResizeNow(int target_width, int target_height)
         {
-            Rectangle dest_rect = new Rectangle(0, 0, target_width, target_height);
-            Bitmap destImage = new Bitmap(target_width, target_height);
-            destImage.SetResolution(originalImage.HorizontalResolution, originalImage.VerticalResolution);
+          //  Rectangle dest_rect = new Rectangle(0, 0, target_width, target_height);
+            Bitmap destImage = new Bitmap(originalImage,target_width, target_height);
+           /* destImage.SetResolution(originalImage.HorizontalResolution, originalImage.VerticalResolution);
             using (var g = Graphics.FromImage(destImage))
             {
 
@@ -643,7 +649,7 @@ namespace mangaTranslator
                 }
    
                
-            }
+            }*/
             return destImage;
         }
 
@@ -725,6 +731,7 @@ namespace mangaTranslator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+    
             TranslateProgramInterface();
             CurrentFont = Properties.Settings.Default.CurrentFont;
         }

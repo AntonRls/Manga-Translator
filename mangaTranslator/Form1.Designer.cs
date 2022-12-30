@@ -37,6 +37,7 @@ namespace mangaTranslator
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@ namespace mangaTranslator
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.changeFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -138,6 +138,13 @@ namespace mangaTranslator
             this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem1.Text = "Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
+            // 
+            // changeFontToolStripMenuItem
+            // 
+            this.changeFontToolStripMenuItem.Name = "changeFontToolStripMenuItem";
+            this.changeFontToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.changeFontToolStripMenuItem.Text = "Change font";
+            this.changeFontToolStripMenuItem.Click += new System.EventHandler(this.changeFontToolStripMenuItem_Click);
             // 
             // numericUpDown1
             // 
@@ -335,7 +342,7 @@ namespace mangaTranslator
             // mangaPicture
             // 
             this.mangaPicture.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.mangaPicture.Location = new System.Drawing.Point(-8, -31);
+            this.mangaPicture.Location = new System.Drawing.Point(3, 0);
             this.mangaPicture.Name = "mangaPicture";
             this.mangaPicture.Size = new System.Drawing.Size(528, 352);
             this.mangaPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -407,13 +414,6 @@ namespace mangaTranslator
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // changeFontToolStripMenuItem
-            // 
-            this.changeFontToolStripMenuItem.Name = "changeFontToolStripMenuItem";
-            this.changeFontToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
-            this.changeFontToolStripMenuItem.Text = "Change font";
-            this.changeFontToolStripMenuItem.Click += new System.EventHandler(this.changeFontToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,7 +450,7 @@ namespace mangaTranslator
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(673, 613);
             this.Name = "Form1";
-            this.Text = "Manga Translator By Russia Developer Anton Piskorskiy";
+            this.Text = "Manga Translator ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
