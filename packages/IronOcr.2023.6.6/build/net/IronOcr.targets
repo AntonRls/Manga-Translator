@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup >
+		<Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\**\*.*">
+		  <Link>runtimes\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		  <PublishState>Included</PublishState>
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		  <Pack>false</Pack>
+		  <Visible>False</Visible>
+		  <IncludeInVsix>true</IncludeInVsix>
+		</Content>
+	</ItemGroup>
+	<Target Name="IronOcrChromeWindowsBuild" BeforeTargets="BeforeBuild">
+		<Message Text="Copying IronOcr files from $(MSBuildThisFileDirectory)..\..\runtimes to build directory for .NET Framework on Windows..." Importance="high" />
+		<ItemGroup >
+			<RuntimesNativeLibsBuild Include="$(MSBuildThisFileDirectory)..\..\runtimes\**\*.*" />
+		</ItemGroup>
+		<Copy
+				SourceFiles="@(RuntimesNativeLibsBuild)"
+				DestinationFolder="$(OutputPath)runtimes\%(RecursiveDir)"
+		/>
+	</Target>
+</Project>

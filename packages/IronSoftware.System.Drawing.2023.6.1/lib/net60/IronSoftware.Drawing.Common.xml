@@ -1,0 +1,2484 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IronSoftware.Drawing.Common</name>
+    </assembly>
+    <members>
+        <member name="T:IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            <para>A universally compatible Bitmap format for .NET 7, .NET 6, .NET 5,
+            and .NET Core. As well as compatibility with Windows, NanoServer, 
+            IIS, macOS, Mobile, Xamarin, iOS, Android, Google Cloud, Azure, AWS, 
+            and Linux.</para>
+            <para>Works nicely with popular Image and Bitmap formats such as 
+            System.Drawing.Bitmap, SkiaSharp, SixLabors.ImageSharp, 
+            Microsoft.Maui.Graphics.</para>
+            <para>Implicit casting means that using this class to input and output 
+            Bitmap and image types from public API's gives full compatibility to 
+            all image type fully supported by Microsoft.</para>
+            <para>Unlike System.Drawing.Bitmap this bitmap object is 
+            self-memory-managing and does not need to be explicitly 'used' 
+            or 'disposed'.</para>
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.Width">
+            <summary>
+            Width of the image.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.Height">
+            <summary>
+            Height of the image.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.Length">
+            <summary>
+            Number of raw image bytes stored
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.GetHashCode">
+            <summary>
+            Hashing integer based on image raw binary data.
+            </summary>
+            <returns>Int</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.ToString">
+            <summary>
+            A Base64 encoded string representation of the raw image binary data.
+            <br/><para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/bitmap-to-string/">
+            Code Example</a></para>
+            </summary>
+            <returns>The bitmap data as a Base64 string.</returns>
+            <seealso cref="M:System.Convert.ToBase64String(System.Byte[])"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.GetBytes">
+            <summary>
+            The raw image data as byte[] (ByteArray)"/>
+            </summary>
+            <returns>A byte[] (ByteArray) </returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.GetStream">
+            <summary>
+            The raw image data as a <see cref="T:System.IO.MemoryStream"/>
+            <br/><para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/bitmap-to-stream/">
+            Code Example</a></para>
+            </summary>
+            <returns><see cref="T:System.IO.MemoryStream"/></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.Clone">
+            <summary>
+            Creates an exact duplicate <see cref="T:IronSoftware.Drawing.AnyBitmap"/>
+            <br/><para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/clone-anybitmap/">
+            Code Example</a></para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.Clone(IronSoftware.Drawing.CropRectangle)">
+            <summary>
+            Creates an exact duplicate <see cref="T:IronSoftware.Drawing.AnyBitmap"/> of the cropped area.
+            <br/><para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/clone-anybitmap/">
+            Code Example</a></para>
+            </summary>
+            <param name="rectangle">Defines the portion of this 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/> to copy.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.ExportBytes(IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">
+            <summary>
+            Exports the Bitmap as bytes encoded in the 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/> of your choice.
+            <para>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp
+            to your project to enable this feature.</para>
+            </summary>
+            <param name="format">An image encoding format.</param>
+            <param name="lossy">JPEG and WebP encoding quality (ignored for all
+            other values of <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/>). Higher values return 
+            larger file sizes. 0 is lowest quality , 100 is highest.</param>
+            <returns>Transcoded image bytes.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.ExportFile(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">
+            <summary>
+            Exports the Bitmap as a file encoded in the 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/> of your choice.
+            <para>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp
+            to your project to enable the encoding feature.</para>
+            <para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/export-anybitmap/">
+            Code Example</a></para>
+            </summary>
+            <param name="file">A fully qualified file path.</param>
+            <param name="format">An image encoding format.</param>
+            <param name="lossy">JPEG and WebP encoding quality (ignored for all
+            other values of <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/>). Higher values return 
+            larger file sizes. 0 is lowest quality, 100 is highest.</param>
+            <returns>Void. Saves a file to disk.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.ToStream(IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">
+            <summary>
+            Exports the Bitmap as a <see cref="T:System.IO.MemoryStream"/> encoded in the 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/> of your choice.
+            <para>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp
+            to your project to enable the encoding feature.</para>
+            <para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/bitmap-to-stream/">
+            Code Example</a></para>
+            </summary>
+            <param name="format">An image encoding format.</param>
+            <param name="lossy">JPEG and WebP encoding quality (ignored for all
+            other values of <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/>). Higher values return 
+            larger file sizes. 0 is lowest quality, 100 is highest.</param>
+            <returns>Transcoded image bytes in a <see cref="T:System.IO.MemoryStream"/>.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.ToStreamFn(IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">
+            <summary>
+            Exports the Bitmap as a Func<see cref="T:System.IO.MemoryStream"/>> encoded in 
+            the <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/> of your choice.
+            <para>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp
+            to your project to enable the encoding feature.</para>
+            </summary>
+            <param name="format">An image encoding format.</param>
+            <param name="lossy">JPEG and WebP encoding quality (ignored for all
+            other values of <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/>). Higher values return 
+            larger file sizes. 0 is lowest quality, 100 is highest.</param>
+            <returns>Transcoded image bytes in a Func <see cref="T:System.IO.MemoryStream"/>
+            </returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.ExportStream(System.IO.Stream,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">
+            <summary>
+            Saves the Bitmap to an existing <see cref="T:System.IO.Stream"/> encoded in the
+            <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/> of your choice.
+            <para>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp
+            to your project to enable the encoding feature.</para>
+            </summary>
+            <param name="stream">An image encoding format.</param>
+            <param name="format">An image encoding format.</param>
+            <param name="lossy">JPEG and WebP encoding quality (ignored for all
+            other values of <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/>). Higher values return 
+            larger file sizes. 0 is lowest quality, 100 is highest.</param>
+            <returns>Void. Saves Transcoded image bytes to you <see cref="T:System.IO.Stream"/>.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.SaveAs(System.String)">
+            <summary>
+            Saves the raw image data to a file.
+            </summary>
+            <param name="file">A fully qualified file path.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.TrySaveAs(System.String)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.SaveAs(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">
+            <summary>
+            Saves the image data to a file. Allows for the image to be 
+            transcoded to popular image formats.
+            <para>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp
+            to your project to enable the encoding feature.</para>
+            </summary>
+            <param name="file">A fully qualified file path.</param>
+            <param name="format">An image encoding format.</param>
+            <param name="lossy">JPEG and WebP encoding quality (ignored for all
+            other values of <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/>). Higher values return 
+            larger file sizes. 0 is lowest quality , 100 is highest.</param>
+            <returns>Void.  Saves Transcoded image bytes to your File.</returns>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.TrySaveAs(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)"/>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.TrySaveAs(System.String)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.TrySaveAs(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">
+            <summary>
+            Tries to Save the image data to a file. Allows for the image to be
+            transcoded to popular image formats.
+            <para>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp
+            to your project to enable the encoding feature.</para>
+            </summary>
+            <param name="file">A fully qualified file path.</param>
+            <param name="format">An image encoding format.</param>
+            <param name="lossy">JPEG and WebP encoding quality (ignored for all
+            other values of <see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/>). Higher values return 
+            larger file sizes. 0 is lowest quality , 100 is highest.</param>
+            <returns>returns true on success, false on failure.</returns>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.SaveAs(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.TrySaveAs(System.String)">
+            <summary>
+            Tries to Save the raw image data to a file.
+            <returns>returns true on success, false on failure.</returns>
+            </summary>
+            <param name="file">A fully qualified file path.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.SaveAs(System.String)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.FromBitmap``1(``0)">
+            <summary>
+            Generic method to convert popular image types to <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para> Support includes SixLabors.ImageSharp.Image, 
+            SkiaSharp.SKImage, SkiaSharp.SKBitmap, System.Drawing.Bitmap, 
+            System.Drawing.Image and Microsoft.Maui.Graphics formats.</para>
+            <para>Syntax sugar. Explicit casts already also exist to and from
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/> and all supported types.</para>
+            </summary>
+            <typeparam name="T">The Type to cast from. Support includes 
+            SixLabors.ImageSharp.Image, SkiaSharp.SKImage, SkiaSharp.SKBitmap,
+            System.Drawing.Bitmap, System.Drawing.Image and 
+            Microsoft.Maui.Graphics formats.</typeparam>
+            <param name="otherBitmapFormat">A bitmap or image format from 
+            another graphics library.</param>
+            <returns>A <see cref="T:IronSoftware.Drawing.AnyBitmap"/></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.ToBitmap``1">
+            <summary>
+            Generic method to convert <see cref="T:IronSoftware.Drawing.AnyBitmap"/> to popular image
+            types.
+            <para> Support includes SixLabors.ImageSharp.Image, 
+            SkiaSharp.SKImage, SkiaSharp.SKBitmap, System.Drawing.Bitmap, 
+            System.Drawing.Image and Microsoft.Maui.Graphics formats.</para>
+            <para>Syntax sugar. Explicit casts already also exist to and from 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/> and all supported types.</para>
+            </summary>
+            <typeparam name="T">The Type to cast to. Support includes 
+            SixLabors.ImageSharp.Image, SkiaSharp.SKImage, SkiaSharp.SKBitmap, 
+            System.Drawing.Bitmap, System.Drawing.Image and 
+            Microsoft.Maui.Graphics formats.</typeparam>
+            <returns>A <see cref="T:IronSoftware.Drawing.AnyBitmap"/></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.FromBytes(System.Byte[])">
+            <summary>
+            Create a new Bitmap from a a Byte Array.
+            </summary>
+            <param name="bytes">A ByteArray of image data in any common format.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromBytes(System.Byte[])"/>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.#ctor(System.Byte[])"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.FromStream(System.IO.MemoryStream)">
+            <summary>
+            Create a new Bitmap from a <see cref="T:System.IO.Stream"/> (bytes).
+            </summary>
+            <param name="stream">A <see cref="T:System.IO.Stream"/> of image data in any 
+            common format.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromStream(System.IO.Stream)"/>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.FromStream(System.IO.Stream)">
+            <summary>
+            Create a new Bitmap from a <see cref="T:System.IO.Stream"/> (bytes).
+            </summary>
+            <param name="stream">A <see cref="T:System.IO.Stream"/> of image data in any 
+            common format.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromStream(System.IO.MemoryStream)"/>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.#ctor(System.Byte[])">
+            <summary>
+            Construct a new Bitmap from binary data (bytes).
+            </summary>
+            <param name="bytes">A ByteArray of image data in any common format.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromBytes(System.Byte[])"/>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.#ctor(System.IO.MemoryStream)">
+            <summary>
+            Construct a new Bitmap from a <see cref="T:System.IO.Stream"/> (bytes).
+            </summary>
+            <param name="stream">A <see cref="T:System.IO.Stream"/> of image data in any 
+            common format.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromStream(System.IO.Stream)"/>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.#ctor(System.IO.Stream)">
+            <summary>
+            Construct a new Bitmap from a <see cref="T:System.IO.Stream"/> (bytes).
+            </summary>
+            <param name="stream">A <see cref="T:System.IO.Stream"/> of image data in any 
+            common format.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromStream(System.IO.MemoryStream)"/>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.#ctor(IronSoftware.Drawing.AnyBitmap,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="original">The <see cref="T:IronSoftware.Drawing.AnyBitmap"/> from which to 
+            create the new <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.</param>
+            <param name="width">The width of the new AnyBitmap.</param>
+            <param name="height">The height of the new AnyBitmap.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.#ctor(System.String)">
+            <summary>
+            Construct a new Bitmap from a file.
+            </summary>
+            <param name="file">A fully qualified file path./</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromFile(System.String)"/>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.#ctor(System.Uri)">
+            <summary>
+            Construct a new Bitmap from a Uri
+            </summary>
+            <param name="uri">The uri of the image.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromUriAsync(System.Uri)"/>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.FromFile(System.String)">
+            <summary>
+            Create a new Bitmap from a file.
+            </summary>
+            <param name="file">A fully qualified file path.</param>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromFile(System.String)"/>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.FromUriAsync(System.Uri)">
+            <summary>
+            Construct a new Bitmap from a Uri
+            </summary>
+            <param name="uri">The uri of the image.</param>
+            <returns></returns>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromUri(System.Uri)"/>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromUriAsync(System.Uri)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.FromUri(System.Uri)">
+            <summary>
+            Construct a new Bitmap from a Uri
+            </summary>
+            <param name="uri">The uri of the image.</param>
+            <returns></returns>
+            <seealso cref="T:IronSoftware.Drawing.AnyBitmap"/>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.FromUriAsync(System.Uri)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.LoadAnyBitmapFromRGBBuffer(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Creates an AnyBitmap object from a buffer of RGB pixel data.
+            </summary>
+            <param name="buffer">An array of bytes representing the RGB pixel data. This should contain 3 bytes (one each for red, green, and blue) for each pixel in the image.</param>
+            <param name="width">The width of the image, in pixels.</param>
+            <param name="height">The height of the image, in pixels.</param>
+            <returns>An AnyBitmap object that represents the image defined by the provided pixel data, width, and height.</returns>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.BitsPerPixel">
+            <summary>
+            Gets colors depth, in number of bits per pixel.
+            <br/><para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/get-color-depth/">
+            Code Example</a></para>
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.FrameCount">
+            <summary>
+            Returns the number of frames in our loaded Image.  Each “frame” is
+            a page of an image such as  Tiff or Gif.  All other image formats 
+            return 1.
+            <br/><para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/get-number-of-frames-in-anybitmap/">
+            Code Example</a></para>
+            </summary>
+            <seealso cref="P:IronSoftware.Drawing.AnyBitmap.GetAllFrames" />
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.GetAllFrames">
+            <summary>
+            Returns all of the cloned frames in our loaded Image. Each "frame" 
+            is a page of an image such as Tiff or Gif. All other image formats 
+            return an IEnumerable of length 1.
+            <br/><para><b>Further Documentation:</b><br/>
+            <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/get-frame-from-anybitmap/">
+            Code Example</a></para>
+            </summary>
+            <seealso cref="P:IronSoftware.Drawing.AnyBitmap.FrameCount" />
+            <seealso cref="N:System.Linq" />
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.CreateMultiFrameTiff(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a multi-frame TIFF image from multiple AnyBitmaps.
+            <para>All images should have the same dimension.</para>
+            <para>If not dimension will be scaling to the largest width and height.</para>
+            <para>The image dimension still the same with original dimension 
+            with black background.</para>
+            </summary>
+            <param name="imagePaths">Array of fully qualified file path to merge
+            into Tiff image.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.CreateMultiFrameTiff(System.Collections.Generic.IEnumerable{IronSoftware.Drawing.AnyBitmap})">
+            <summary>
+            Creates a multi-frame TIFF image from multiple AnyBitmaps.
+            <para>All images should have the same dimension.</para>
+            <para>If not dimension will be scaling to the largest width and 
+            height.</para>
+            <para>The image dimension still the same with original dimension 
+            with black background.</para>
+            </summary>
+            <param name="images">Array of <see cref="T:IronSoftware.Drawing.AnyBitmap"/> to merge into
+            Tiff image.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.CreateMultiFrameGif(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a multi-frame GIF image from multiple AnyBitmaps.
+            <para>All images should have the same dimension.</para>
+            <para>If not dimension will be scaling to the largest width and 
+            height.</para>
+            <para>The image dimension still the same with original dimension
+            with background transparent.</para>
+            </summary>
+            <param name="imagePaths">Array of fully qualified file path to merge
+            into Gif image.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.CreateMultiFrameGif(System.Collections.Generic.IEnumerable{IronSoftware.Drawing.AnyBitmap})">
+            <summary>
+            Creates a multi-frame GIF image from multiple AnyBitmaps.
+            <para>All images should have the same dimension.</para>
+            <para>If not dimension will be scaling to the largest width and 
+            height.</para>
+            <para>The image dimension still the same with original dimension 
+            with background transparent.</para>
+            </summary>
+            <param name="images">Array of <see cref="T:IronSoftware.Drawing.AnyBitmap"/> to merge into
+            Gif image.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.RotateFlip(IronSoftware.Drawing.AnyBitmap.RotateMode,IronSoftware.Drawing.AnyBitmap.FlipMode)">
+            <summary>
+            Specifies how much an <see cref="T:IronSoftware.Drawing.AnyBitmap"/> is rotated and the 
+            axis used to flip the image.
+            </summary>
+            <param name="rotateMode">Provides enumeration over how the image 
+            should be rotated.</param>
+            <param name="flipMode">Provides enumeration over how a image 
+            should be flipped.</param>
+            <returns>Transformed image</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.RotateFlip(IronSoftware.Drawing.AnyBitmap.RotateFlipType)">
+            <summary>
+            Specifies how much an <see cref="T:IronSoftware.Drawing.AnyBitmap"/> is rotated and the 
+            axis used to flip the image.
+            </summary>
+            <param name="rotateFlipType">Provides enumeration over how the 
+            image should be rotated.</param>
+            <returns>Transformed image</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.RotateFlip(IronSoftware.Drawing.AnyBitmap,IronSoftware.Drawing.AnyBitmap.RotateMode,IronSoftware.Drawing.AnyBitmap.FlipMode)">
+            <summary>
+            Specifies how much an image is rotated and the axis used to flip 
+            the image.
+            </summary>
+            <param name="bitmap">The <see cref="T:IronSoftware.Drawing.AnyBitmap"/> to perform the 
+            transformation on.</param>
+            <param name="rotateMode">Provides enumeration over how the image 
+            should be rotated.</param>
+            <param name="flipMode">Provides enumeration over how a image 
+            should be flipped.</param>
+            <returns>Transformed image</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.Redact(IronSoftware.Drawing.CropRectangle,IronSoftware.Drawing.Color)">
+            <summary>
+            Creates a new bitmap with the region defined by the specified crop
+            rectangle redacted with the specified color.
+            </summary>
+            <param name="cropRectangle">The crop rectangle defining the region
+            to redact.</param>
+            <param name="color">The color to use for redaction.</param>
+            <returns>A new bitmap with the specified region redacted.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.Redact(IronSoftware.Drawing.AnyBitmap,IronSoftware.Drawing.CropRectangle,IronSoftware.Drawing.Color)">
+            <summary>
+            Creates a new bitmap with the region defined by the specified crop
+            rectangle in the specified bitmap redacted with the specified color.
+            </summary>
+            <param name="bitmap">The bitmap to redact.</param>
+            <param name="cropRectangle">The crop rectangle defining the region
+            to redact.</param>
+            <param name="color">The color to use for redaction.</param>
+            <returns>A new bitmap with the specified region redacted.</returns>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.Stride">
+            <summary>
+            Gets the stride width (also called scan width) of the 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/> object.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.Scan0">
+            <summary>
+            Gets the address of the first pixel data in the 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>. This can also be thought of as the first 
+            scan line in the <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            </summary>
+            <returns>The address of the first 32bpp BGRA pixel data in the 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.</returns>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.MimeType">
+            <summary>
+            Returns the 
+            <see href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">
+            HTTP MIME types</see>
+            of the image. 
+            <para>must be one of the following: image/bmp, image/jpeg, 
+            image/png, image/gif, image/tiff, image/webp, or image/unknown.</para>
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.GetImageFormat">
+            <summary>
+            Image formats which <see cref="T:IronSoftware.Drawing.AnyBitmap"/> readed.
+            </summary>
+            <returns><see cref="T:IronSoftware.Drawing.AnyBitmap.ImageFormat"/></returns>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.HorizontalResolution">
+            <summary>
+            Gets the resolution of the image in x-direction.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:IronSoftware.Drawing.AnyBitmap.VerticalResolution">
+            <summary>
+            Gets the resolution of the image in y-direction.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.GetPixel(System.Int32,System.Int32)">
+            <summary>
+            Gets the <see cref="T:IronSoftware.Drawing.Color"/> of the specified pixel in this 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>
+            <para>This always return an Rgba32 color format.</para>
+            </summary>
+            <param name="x">The x-coordinate of the pixel to retrieve.</param>
+            <param name="y">The y-coordinate of the pixel to retrieve.</param>
+            <returns>A <see cref="T:IronSoftware.Drawing.Color"/> structure that represents the color 
+            of the specified pixel.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.GetRGBBuffer">
+            <summary>
+            Retrieves the RGB buffer from the image at the specified path.
+            </summary>
+            <returns>An array of bytes representing the RGB buffer of the image.</returns>
+            <remarks>
+            Each pixel is represented by three bytes in the order: red, green, blue.
+            The pixels are read from the image row by row, from top to bottom and left to right within each row.
+            </remarks>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgb24})~IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            Implicitly casts SixLabors.ImageSharp.Image objects to 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support ImageSharp
+            as well.</para>
+            </summary>
+            <param name="image">SixLabors.ImageSharp.Image will automatically 
+            be cast to <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgb24}">
+            <summary>
+            Implicitly casts to SixLabors.ImageSharp.Image objects from 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> 
+            as parameters or return types, you now automatically support 
+            ImageSharp as well.</para>
+            </summary>
+            <param name="bitmap"><see cref="T:IronSoftware.Drawing.AnyBitmap"/> is implicitly cast to 
+            a SixLabors.ImageSharp.Image.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgba32})~IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            Implicitly casts SixLabors.ImageSharp.Image objects to 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support ImageSharp
+            as well.</para>
+            </summary>
+            <param name="image">SixLabors.ImageSharp.Image will automatically be
+            cast to <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgba32}">
+            <summary>
+            Implicitly casts to SixLabors.ImageSharp.Image objects from 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support ImageSharp
+            as well.</para>
+            </summary>
+            <param name="bitmap"><see cref="T:IronSoftware.Drawing.AnyBitmap"/> is implicitly cast to
+            a SixLabors.ImageSharp.Image.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(SixLabors.ImageSharp.Image)~IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            Implicitly casts SixLabors.ImageSharp.Image objects to 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support ImageSharp
+            as well.</para>
+            </summary>
+            <param name="image">SixLabors.ImageSharp.Image will automatically
+            be cast to <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SixLabors.ImageSharp.Image">
+            <summary>
+            Implicitly casts to SixLabors.ImageSharp.Image objects from 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support ImageSharp
+            as well.</para>
+            </summary>
+            <param name="bitmap"><see cref="T:IronSoftware.Drawing.AnyBitmap"/> is implicitly cast to
+            a SixLabors.ImageSharp.Image.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(SkiaSharp.SKImage)~IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            Implicitly casts SkiaSharp.SKImage objects to 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as
+            parameters or return types, you now automatically support SkiaSharp
+            as well.</para>
+            </summary>
+            <param name="image">SkiaSharp.SKImage will automatically be cast to
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SkiaSharp.SKImage">
+            <summary>
+            Implicitly casts to SkiaSharp.SKImage objects from <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support 
+            SkiaSharp.SKImage as well.</para>
+            </summary>
+            <param name="bitmap"><see cref="T:IronSoftware.Drawing.AnyBitmap"/> is implicitly cast to 
+            a SkiaSharp.SKImage.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(SkiaSharp.SKBitmap)~IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            Implicitly casts SkiaSharp.SKBitmap objects to <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as
+            parameters or return types, you now automatically support SkiaSharp
+            as well.</para>
+            </summary>
+            <param name="image">SkiaSharp.SKBitmap will automatically be cast
+            to <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SkiaSharp.SKBitmap">
+            <summary>
+            Implicitly casts to SkiaSharp.SKBitmap objects from <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support 
+            SkiaSharp.SKBitmap as well.</para>
+            </summary>
+            <param name="bitmap"><see cref="T:IronSoftware.Drawing.AnyBitmap"/> is explicitly cast to 
+            a SkiaSharp.SKBitmap.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(Microsoft.Maui.Graphics.Platform.PlatformImage)~IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            Implicitly casts Microsoft.Maui.Graphics.Platform.PlatformImage 
+            objects to <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support 
+            Microsoft.Maui.Graphics as well.</para>
+            </summary>
+            <param name="image">Microsoft.Maui.Graphics.Platform.PlatformImage 
+            will automatically be cast to <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~Microsoft.Maui.Graphics.Platform.PlatformImage">
+            <summary>
+            Implicitly casts to Microsoft.Maui.Graphics.Platform.PlatformImage 
+            objects from <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support 
+            Microsoft.Maui.Graphics as well.</para>
+            </summary>
+            <param name="bitmap"><see cref="T:IronSoftware.Drawing.AnyBitmap"/> is implicitly cast to 
+            a Microsoft.Maui.Graphics.Platform.PlatformImage.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(System.Drawing.Bitmap)~IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            Implicitly casts System.Drawing.Bitmap objects to 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support 
+            System.Drawing.Common as well.</para>
+            </summary>
+            <param name="image">System.Drawing.Bitmap will automatically be cast to <see cref="T:IronSoftware.Drawing.AnyBitmap"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~System.Drawing.Bitmap">
+            <summary>
+            Implicitly casts to System.Drawing.Bitmap objects from 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support 
+            System.Drawing.Common as well.</para>
+            </summary>
+            <param name="bitmap"><see cref="T:IronSoftware.Drawing.AnyBitmap"/> is implicitly cast to
+            a System.Drawing.Bitmap.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(System.Drawing.Image)~IronSoftware.Drawing.AnyBitmap">
+            <summary>
+            Implicitly casts System.Drawing.Image objects to
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as 
+            parameters or return types, you now automatically support 
+            System.Drawing.Common as well.</para>
+            </summary>
+            <param name="image">System.Drawing.Image will automatically be cast
+            to <see cref="T:IronSoftware.Drawing.AnyBitmap"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~System.Drawing.Image">
+            <summary>
+            Implicitly casts to System.Drawing.Image objects from 
+            <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.AnyBitmap"/> as
+            parameters or return types, you now automatically support 
+            System.Drawing.Common as well.</para>
+            </summary>
+            <param name="bitmap"><see cref="T:IronSoftware.Drawing.AnyBitmap"/> is implicitly cast to 
+            a System.Drawing.Image.</param>
+        </member>
+        <member name="T:IronSoftware.Drawing.AnyBitmap.ImageFormat">
+            <summary>
+            Popular image formats which <see cref="T:IronSoftware.Drawing.AnyBitmap"/> can read and export.
+            </summary>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.ExportFile(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)"/>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.ExportStream(System.IO.Stream,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)"/>
+            <seealso cref="M:IronSoftware.Drawing.AnyBitmap.ExportBytes(IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)"/>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Bmp">
+            <summary> The Bitmap image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Gif">
+            <summary> The Gif image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Tiff">
+            <summary> The Tiff image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Jpeg">
+            <summary> The Jpeg image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Png">
+            <summary> The PNG image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Wbmp">
+            <summary> The WBMP image format. Will default to BMP if not 
+            supported on the runtime platform.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Webp">
+            <summary> The new WebP image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Icon">
+            <summary> The Icon image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Wmf">
+            <summary> The Wmf image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.RawFormat">
+            <summary> The Raw image format.</summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.ImageFormat.Default">
+            <summary> The existing raw image format.</summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.ParseRotateFlipType(IronSoftware.Drawing.AnyBitmap.RotateFlipType)">
+            <summary>
+            Converts the legacy <see cref="T:IronSoftware.Drawing.AnyBitmap.RotateFlipType"/> to <see cref="T:IronSoftware.Drawing.AnyBitmap.RotateMode"/> and <see cref="T:IronSoftware.Drawing.AnyBitmap.FlipMode"/>
+            </summary>
+        </member>
+        <member name="T:IronSoftware.Drawing.AnyBitmap.RotateMode">
+            <summary>
+            Provides enumeration over how the image should be rotated.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateMode.None">
+            <summary>
+            Do not rotate the image.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateMode.Rotate90">
+            <summary>
+            Rotate the image by 90 degrees clockwise.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateMode.Rotate180">
+            <summary>
+            Rotate the image by 180 degrees clockwise.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateMode.Rotate270">
+            <summary>
+            Rotate the image by 270 degrees clockwise.
+            </summary>
+        </member>
+        <member name="T:IronSoftware.Drawing.AnyBitmap.FlipMode">
+            <summary>
+            Provides enumeration over how a image should be flipped.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.FlipMode.None">
+            <summary>
+            Don't flip the image.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.FlipMode.Horizontal">
+            <summary>
+            Flip the image horizontally.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.FlipMode.Vertical">
+            <summary>
+            Flip the image vertically.
+            </summary>
+        </member>
+        <member name="T:IronSoftware.Drawing.AnyBitmap.RotateFlipType">
+            <summary>
+            Specifies how much an image is rotated and the axis used to flip 
+            the image. This follows the legacy System.Drawing.RotateFlipType 
+            notation.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.RotateNoneFlipNone">
+            <summary>
+            Specifies no clockwise rotation and no flipping.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate180FlipXY">
+            <summary>
+            Specifies a 180-degree clockwise rotation followed by a 
+            horizontal and vertical flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate90FlipNone">
+            <summary>
+            Specifies a 90-degree clockwise rotation without flipping.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate270FlipXY">
+            <summary>
+            Specifies a 270-degree clockwise rotation followed by a 
+            horizontal and vertical flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.RotateNoneFlipXY">
+            <summary>
+            Specifies no clockwise rotation followed by a horizontal and 
+            vertical flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate180FlipNone">
+            <summary>
+            Specifies a 180-degree clockwise rotation without flipping.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate90FlipXY">
+            <summary>
+            Specifies a 90-degree clockwise rotation followed by a 
+            horizontal and vertical flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate270FlipNone">
+            <summary>
+            Specifies a 270-degree clockwise rotation without flipping.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.RotateNoneFlipX">
+            <summary>
+            Specifies no clockwise rotation followed by a horizontal flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate180FlipY">
+            <summary>
+            Specifies a 180-degree clockwise rotation followed by a 
+            vertical flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate90FlipX">
+            <summary>
+            Specifies a 90-degree clockwise rotation followed by a 
+            horizontal flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate270FlipY">
+            <summary>
+            Specifies a 270-degree clockwise rotation followed by a 
+            vertical flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.RotateNoneFlipY">
+            <summary>
+            Specifies no clockwise rotation followed by a vertical flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate180FlipX">
+            <summary>
+            Specifies a 180-degree clockwise rotation followed by a 
+            horizontal flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate90FlipY">
+            <summary>
+            Specifies a 90-degree clockwise rotation followed by a 
+            vertical flip.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.AnyBitmap.RotateFlipType.Rotate270FlipX">
+            <summary>
+            Specifies a 270-degree clockwise rotation followed by a 
+            horizontal flip.
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.Finalize">
+            <summary>
+            AnyBitmap destructor
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.Dispose">
+            <summary>
+            Releases all resources used by this <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.AnyBitmap.Dispose(System.Boolean)">
+            <summary>
+            Releases all resources used by this <see cref="T:IronSoftware.Drawing.AnyBitmap"/>.
+            </summary>
+        </member>
+        <member name="T:IronSoftware.Drawing.Color">
+            <summary>
+            A universally compatible Color for .NET 7, .NET 6, .NET 5, and .NET Core. As well as compatiblity with Windows, NanoServer, IIS, macOS, Mobile, Xamarin, iOS, Android, Google Compute, Azure, AWS, and Linux.
+            <para>Works nicely with popular Image Color such as <see cref="T:System.Drawing.Color"/>, <see cref="T:SkiaSharp.SKColor"/>, <see cref="T:SixLabors.ImageSharp.Color"/>, <see cref="T:Microsoft.Maui.Graphics.Color"/>.</para>
+            <para>Implicit casting means that using this class to input and output Color from public APIs gives full compatibility to all Color-types fully supported by Microsoft.</para>
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.Color.A">
+            <summary>
+            Gets the alpha component value of this <see cref="T:IronSoftware.Drawing.Color"/> structure.
+            </summary>
+            <return>The alpha component value of this <see cref="T:IronSoftware.Drawing.Color"/>.</return>
+        </member>
+        <member name="P:IronSoftware.Drawing.Color.G">
+            <summary>
+            Gets the green component value of this <see cref="T:IronSoftware.Drawing.Color"/> structure.
+            </summary>
+            <return>The green component value of this <see cref="T:IronSoftware.Drawing.Color"/>.</return>
+        </member>
+        <member name="P:IronSoftware.Drawing.Color.B">
+            <summary>
+            Gets the blue component value of this <see cref="T:IronSoftware.Drawing.Color"/> structure.
+            </summary>
+            <return>The blue component value of this <see cref="T:IronSoftware.Drawing.Color"/>.</return>
+        </member>
+        <member name="P:IronSoftware.Drawing.Color.R">
+            <summary>
+            Gets the red component value of this <see cref="T:IronSoftware.Drawing.Color"/> structure.
+            </summary>
+            <return>The red component value of this <see cref="T:IronSoftware.Drawing.Color"/>.</return>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.#ctor(System.String)">
+            <summary>
+            Construct a new <see cref="T:IronSoftware.Drawing.Color"/>.
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-color/">Code Example</a></para>
+            </summary>
+            <param name="colorcode">The hexadecimal representation of the combined color components arranged in rgb, argb, rrggbb, or aarrggbb format to match web syntax.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Construct a new <see cref="T:IronSoftware.Drawing.Color"/>.
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-color/">Code Example</a></para>
+            </summary>
+            <param name="alpha">The alpha component. Valid values are 0 through 255.</param>
+            <param name="red">The red component. Valid values are 0 through 255.</param>
+            <param name="green">The green component. Valid values are 0 through 255.</param>
+            <param name="blue">The blue component. Valid values are 0 through 255.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Construct a new <see cref="T:IronSoftware.Drawing.Color"/>.
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-color/">Code Example</a></para>
+            </summary>
+            <param name="red">The red component. Valid values are 0 through 255.</param>
+            <param name="green">The green component. Valid values are 0 through 255.</param>
+            <param name="blue">The blue component. Valid values are 0 through 255.</param>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Empty">
+            <summary>
+            Represents a color that is null.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.AliceBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F0F8FF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.AntiqueWhite">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FAEBD7.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Aqua">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00FFFF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Aquamarine">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #7FFFD4.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Azure">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F0FFFF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Beige">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F5F5DC.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Bisque">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFE4C4.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Black">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #000000.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.BlanchedAlmond">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFEBCD.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Blue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #0000FF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.BlueViolet">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #8A2BE2.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Brown">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #A52A2A.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.BurlyWood">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #DEB887.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.CadetBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #5F9EA0.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Chartreuse">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #7FFF00.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Chocolate">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #D2691E.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Coral">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF7F50.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.CornflowerBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #6495ED.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Cornsilk">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFF8DC.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Crimson">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #DC143C.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Cyan">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00FFFF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00008B.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkCyan">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #008B8B.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkGoldenrod">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #B8860B.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkGray">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #A9A9A9.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #006400.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkKhaki">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #BDB76B.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkMagenta">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #8B008B.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkOliveGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #556B2F.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkOrange">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF8C00.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkOrchid">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #9932CC.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkRed">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #8B0000.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkSalmon">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #E9967A.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkSeaGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #8FBC8B.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkSlateBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #483D8B.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkSlateGray">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #2F4F4F.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkTurquoise">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00CED1.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DarkViolet">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #9400D3.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DeepPink">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF1493.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DeepSkyBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00BFFF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DimGray">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #696969.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.DodgerBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #1E90FF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Firebrick">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #B22222.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.FloralWhite">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFFAF0.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.ForestGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #228B22.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Fuchsia">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF00FF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Gainsboro">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #DCDCDC.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.GhostWhite">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F8F8FF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Gold">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFD700.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Goldenrod">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #DAA520.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Gray">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #808080.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Green">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #008000.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.GreenYellow">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #ADFF2F.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Honeydew">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F0FFF0.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.HotPink">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF69B4.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.IndianRed">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #CD5C5C.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Indigo">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #4B0082.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Ivory">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFFFF0.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Khaki">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F0E68C.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Lavender">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #E6E6FA.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LavenderBlush">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFF0F5.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LawnGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #7CFC00.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LemonChiffon">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFFACD.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #ADD8E6.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightCoral">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F08080.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightCyan">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #E0FFFF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightGoldenrodYellow">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FAFAD2.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightGray">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #D3D3D3.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #90EE90.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightPink">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFB6C1.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightSalmon">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFA07A.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightSeaGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #20B2AA.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightSkyBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #87CEFA.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightSlateGray">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #778899.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightSteelBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #B0C4DE.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LightYellow">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFFFE0.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Lime">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00FF00.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.LimeGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #32CD32.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Linen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FAF0E6.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Magenta">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF00FF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Maroon">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #800000.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumAquamarine">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #66CDAA.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #0000CD.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumOrchid">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #BA55D3.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumPurple">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #9370DB.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumSeaGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #3CB371.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumSlateBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #7B68EE.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumSpringGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00FA9A.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumTurquoise">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #48D1CC.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MediumVioletRed">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #C71585.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MidnightBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #191970.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MintCream">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F5FFFA.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.MistyRose">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFE4E1.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Moccasin">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFE4B5.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.NavajoWhite">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFDEAD.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Navy">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #000080.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.OldLace">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FDF5E6.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Olive">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #808000.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.OliveDrab">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #6B8E23.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Orange">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFA500.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.OrangeRed">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF4500.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Orchid">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #DA70D6.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.PaleGoldenrod">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #EEE8AA.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.PaleGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #98FB98.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.PaleTurquoise">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #AFEEEE.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.PaleVioletRed">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #DB7093.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.PapayaWhip">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFEFD5.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.PeachPuff">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFDAB9.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Peru">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #CD853F.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Pink">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFC0CB.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Plum">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #DDA0DD.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.PowderBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #B0E0E6.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Purple">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #800080.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.RebeccaPurple">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #663399.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Red">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF0000.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.RosyBrown">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #BC8F8F.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.RoyalBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #4169E1.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SaddleBrown">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #8B4513.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Salmon">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FA8072.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SandyBrown">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F4A460.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SeaGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #2E8B57.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SeaShell">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFF5EE.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Sienna">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #A0522D.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Silver">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #C0C0C0.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SkyBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #87CEEB.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SlateBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #6A5ACD.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SlateGray">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #708090.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Snow">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFFAFA.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SpringGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00FF7F.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.SteelBlue">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #4682B4.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Tan">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #D2B48C.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Teal">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #008080.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Thistle">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #D2B48C.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Tomato">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FF6347.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Transparent">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #00FFFFFF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Turquoise">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #40E0D0.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Violet">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #EE82EE.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Wheat">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F5DEB3.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.White">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFFFFF.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.WhiteSmoke">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #F5F5F5.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.Yellow">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #FFFF00.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="F:IronSoftware.Drawing.Color.YellowGreen">
+            <summary>
+            Gets a system-defined color that has an ARGB value of #9ACD32.
+            </summary>
+            <return>A <see cref="T:IronSoftware.Drawing.Color"/> representing a system-defined color.</return>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:IronSoftware.Drawing.Color"/> structure from the specified 8-bit color values
+            (red, green, and blue). The alpha value is implicitly 255 (fully opaque). Although
+            this method allows a 32-bit value to be passed for each color component, the
+            value of each component is limited to 8 bits.
+            </summary>
+            <param name="red">The red component value for the new <see cref="T:IronSoftware.Drawing.Color"/>. Valid values are 0 through 255.</param>
+            <param name="green">The green component value for the new <see cref="T:IronSoftware.Drawing.Color"/>. Valid values are 0 through 255.</param>
+            <param name="blue">The blue component value for the new <see cref="T:IronSoftware.Drawing.Color"/>. Valid values are 0 through 255.</param>
+            <returns><see cref="T:IronSoftware.Drawing.Color"/></returns>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32)"/>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,IronSoftware.Drawing.Color)"/>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,System.Int32,System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:IronSoftware.Drawing.Color"/> structure from the specified 8-bit color values
+            (alpha, red, green, and blue). Although this method allows a 32-bit value to be passed for each color component,
+            the value of each component is limited to 8 bits.
+            </summary>
+            <param name="alpha">The alpha value for the new <see cref="T:IronSoftware.Drawing.Color"/>. Valid values are 0 through 255.</param>
+            <param name="red">The red component value for the new <see cref="T:IronSoftware.Drawing.Color"/>. Valid values are 0 through 255.</param>
+            <param name="green">The green component value for the new <see cref="T:IronSoftware.Drawing.Color"/>. Valid values are 0 through 255.</param>
+            <param name="blue">The blue component value for the new <see cref="T:IronSoftware.Drawing.Color"/>. Valid values are 0 through 255.</param>
+            <returns><see cref="T:IronSoftware.Drawing.Color"/></returns>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32)"/>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,IronSoftware.Drawing.Color)"/>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,IronSoftware.Drawing.Color)">
+            <summary>
+            Creates a <see cref="T:IronSoftware.Drawing.Color"/> structure from the specified <see cref="T:IronSoftware.Drawing.Color"/> structure, but with the new specified alpha value. 
+            <para>Although this method allows a 32-bit value to be passed for the alpha value, the value is limited to 8 bits.</para>
+            </summary>
+            <param name="alpha">The alpha value for the new <see cref="T:IronSoftware.Drawing.Color"/>. Valid values are 0 through 255.</param>
+            <param name="baseColor">The <see cref="T:IronSoftware.Drawing.Color"/> from which to create the new <see cref="T:IronSoftware.Drawing.Color"/>.</param>
+            <returns><see cref="T:IronSoftware.Drawing.Color"/></returns>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32)"/>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,System.Int32,System.Int32)"/>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,System.Int32,System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.FromArgb(System.Int32)">
+            <summary>
+            Creates a <see cref="T:IronSoftware.Drawing.Color"/> structure from a 32-bit ARGB value.
+            </summary>
+            <param name="argb">A value specifying the 32-bit ARGB value.</param>
+            <returns><see cref="T:IronSoftware.Drawing.Color"/></returns>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,IronSoftware.Drawing.Color)"/>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,System.Int32,System.Int32)"/>
+            <seealso cref="M:IronSoftware.Drawing.Color.FromArgb(System.Int32,System.Int32,System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.FromName(System.String)">
+            <summary>
+            Creates a <see cref="T:IronSoftware.Drawing.Color"/> structure from the specified name of a predefined color.
+            </summary>
+            <param name="name"></param>
+            <returns><see cref="T:IronSoftware.Drawing.Color"/></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.ToString">
+            <summary>
+            Returns the color as a string in the format: #AARRGGBB.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.GetLuminance">
+            <summary>
+            Luminance is a value from 0 (black) to 100 (white) where 50 is the perceptual "middle grey". 
+            Luminance = 50 is the equivalent of Y = 18.4, or in other words a 18% grey card, representing the middle of a photographic exposure.
+            </summary>
+            <returns>Preceived Lightness</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.ToArgb">
+            <summary>
+            Gets the 32-bit ARGB value of this <see cref="T:IronSoftware.Drawing.Color"/> structure.
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/convert-color-to-32-bit-argb-value/">Code Example</a></para>
+            </summary>
+            <returns>The 32-bit ARGB value of this <see cref="T:IronSoftware.Drawing.Color"/>.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(System.Drawing.Color)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:System.Drawing.Color"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:System.Drawing.Color"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:System.Drawing.Color"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~System.Drawing.Color">
+            <summary>
+            Implicitly casts to <see cref="T:System.Drawing.Color"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:System.Drawing.Color"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:System.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SkiaSharp.SKColor)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SkiaSharp.SKColor"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SkiaSharp.SKColor"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SkiaSharp.SKColor"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SkiaSharp.SKColor">
+            <summary>
+            Implicitly casts to <see cref="T:SkiaSharp.SKColor"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SkiaSharp.SKColor"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SkiaSharp.SKColor"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.Color)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.Color"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.Color"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.Color"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.Color">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.Color"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.Color"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.PixelFormats.Rgba32)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba32"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba32"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba32"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.PixelFormats.Rgba32">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba32"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba32"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba32"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.PixelFormats.Bgra32)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgra32"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgra32"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.PixelFormats.Bgra32"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.PixelFormats.Bgra32">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgra32"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgra32"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgra32"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.PixelFormats.Rgb24)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb24"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb24"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb24"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.PixelFormats.Rgb24">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb24"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb24"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb24"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.PixelFormats.Bgr24)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgr24"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgr24"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.PixelFormats.Bgr24"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.PixelFormats.Bgr24">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgr24"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgr24"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.PixelFormats.Bgr24"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.PixelFormats.Rgb48)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb48"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb48"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb48"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.PixelFormats.Rgb48">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb48"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb48"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgb48"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.PixelFormats.Rgba64)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba64"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba64"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba64"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.PixelFormats.Rgba64">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba64"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba64"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.PixelFormats.Rgba64"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.PixelFormats.Abgr32)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.PixelFormats.Abgr32"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Abgr32"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.PixelFormats.Abgr32"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.PixelFormats.Abgr32">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.PixelFormats.Abgr32"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Abgr32"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.PixelFormats.Abgr32"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(SixLabors.ImageSharp.PixelFormats.Argb32)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:SixLabors.ImageSharp.PixelFormats.Argb32"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Argb32"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:SixLabors.ImageSharp.PixelFormats.Argb32"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~SixLabors.ImageSharp.PixelFormats.Argb32">
+            <summary>
+            Implicitly casts to <see cref="T:SixLabors.ImageSharp.PixelFormats.Argb32"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:SixLabors.ImageSharp.PixelFormats.Argb32"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:SixLabors.ImageSharp.PixelFormats.Argb32"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(Microsoft.Maui.Graphics.Color)~IronSoftware.Drawing.Color">
+            <summary>
+            Implicitly casts <see cref="T:Microsoft.Maui.Graphics.Color"/> objects to <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:Microsoft.Maui.Graphics.Color"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:Microsoft.Maui.Graphics.Color"/> will automatically be cast to <see cref="T:IronSoftware.Drawing.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Implicit(IronSoftware.Drawing.Color)~Microsoft.Maui.Graphics.Color">
+            <summary>
+            Implicitly casts to <see cref="T:Microsoft.Maui.Graphics.Color"/> objects from <see cref="T:IronSoftware.Drawing.Color"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Color"/> as parameters or return types, you now automatically support <see cref="T:Microsoft.Maui.Graphics.Color"/> as well.</para>
+            </summary>
+            <param name="color"><see cref="T:IronSoftware.Drawing.Color"/> is explicitly cast to a <see cref="T:Microsoft.Maui.Graphics.Color"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Equality(IronSoftware.Drawing.Color,IronSoftware.Drawing.Color)">
+            <summary>
+            Tests whether two specified <see cref="T:IronSoftware.Drawing.Color"/> structures are equivalent.
+            </summary>
+            <param name="left">The <see cref="T:IronSoftware.Drawing.Color"/> that is to the left of the equality operator.</param>
+            <param name="right">The <see cref="T:IronSoftware.Drawing.Color"/> that is to the right of the equality operator.</param>
+            <returns>true if the two <see cref="T:IronSoftware.Drawing.Color"/> structures are equal; otherwise, false.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.op_Inequality(IronSoftware.Drawing.Color,IronSoftware.Drawing.Color)">
+            <summary>
+            Tests whether two specified <see cref="T:IronSoftware.Drawing.Color"/> structures are different.
+            </summary>
+            <param name="left">The <see cref="T:IronSoftware.Drawing.Color"/> that is to the left of the inequality operator.</param>
+            <param name="right">The <see cref="T:IronSoftware.Drawing.Color"/> that is to the right of the inequality operator.</param>
+            <returns>true if the two <see cref="T:IronSoftware.Drawing.Color"/> structures are different; otherwise, false.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.Equals(System.Object)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>true if the current object is equal to other; otherwise, false.</returns>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:IronSoftware.Drawing.Color.ToHtmlCssColorCode">
+            <summary>
+            Translates the specified Color structure to an HTML string color representation.
+            </summary>
+            <returns>A string containing the hex representation of the color in the format #RRGGBB.</returns>
+        </member>
+        <member name="T:IronSoftware.Drawing.CropRectangle">
+            <summary>
+            A universally compatible Rectangle for .NET 7, .NET 6, .NET 5, and .NET Core. As well as compatiblity with Windows, NanoServer, IIS, macOS, Mobile, Xamarin, iOS, Android, Google Compute, Azure, AWS, and Linux.
+            <para>Works nicely with popular Image Rectangle such as System.Drawing.Rectangle, SkiaSharp.SKRect, SixLabors.ImageSharp.Rectangle, Microsoft.Maui.Graphics.Rect.</para>
+            <para>Implicit casting means that using this class to input and output Rectangle from public API's gives full compatibility to all Rectangle type fully supported by Microsoft.</para>
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.#ctor">
+            <summary>
+            Construct a new CropRectangle.
+            </summary>
+            <seealso cref="T:IronSoftware.Drawing.CropRectangle"/>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,IronSoftware.Drawing.MeasurementUnits)">
+            <summary>
+            Construct a new CropRectangle.
+            </summary>
+            <param name="x">The x-coordinate of the upper-left corner of this Rectangle</param>
+            <param name="y">The y-coordinate of the upper-left corner of this Rectangle</param>
+            <param name="width">The width of this Rectangle</param>
+            <param name="height">The height of this Rectangle</param>
+            <param name="units">The measurement unit of this Rectangle</param>
+            <seealso cref="T:IronSoftware.Drawing.CropRectangle"/>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.X">
+            <summary>
+            The x-coordinate of the upper-left corner of this Rectangle. The default is 0.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.Y">
+            <summary>
+            The y-coordinate of the upper-left corner of this Rectangle. The default is 0.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.Width">
+            <summary>
+            The width of this Rectangle. The default is 0.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.Height">
+            <summary>
+            The height of this Rectangle. The default is 0.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.Units">
+            <summary>
+            The measurement unit of this Rectangle. The default is Pixels
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.ConvertTo(IronSoftware.Drawing.MeasurementUnits,System.Int32)">
+            <summary>
+            Convert this crop rectangle to the specified units of measurement using the specified DPI
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/convert-measurement-unit-of-croprectangle/">Code Example</a></para>
+            </summary>
+            <param name="units">Unit of measurement</param>
+            <param name="dpi">DPI (Dots per inch) for conversion</param>
+            <returns>A new crop rectangle which uses the desired units of measurement</returns>
+            <exception cref="T:System.NotImplementedException">Conversion not implemented</exception>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.Top">
+            <summary>
+            Gets the y-coordinate of the top edge of this <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.Right">
+            <summary>
+            Gets the x-coordinate of the right edge of this <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.Bottom">
+            <summary>
+            Gets the y-coordinate of the bottom edge of this <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.CropRectangle.Left">
+            <summary>
+            Gets the x-coordinate of the left edge of this <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.Contains(System.Int32,System.Int32)">
+            <summary>
+            Determines if the specified point is contained within the rectangular region defined by
+            this <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            </summary>
+            <param name="x">The x-coordinate of the given point.</param>
+            <param name="y">The y-coordinate of the given point.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(System.Drawing.Rectangle)~IronSoftware.Drawing.CropRectangle">
+            <summary>
+            Implicitly casts System.Drawing.Rectangle objects to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support Rectangle as well.</para>
+            </summary>
+            <param name="rectangle">System.Drawing.Rectangle will automatically be cast to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~System.Drawing.Rectangle">
+            <summary>
+            Implicitly casts to System.Drawing.Rectangle objects from <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support Rectangle as well.</para>
+            </summary>
+            <param name="cropRectangle"><see cref="T:IronSoftware.Drawing.CropRectangle"/> is explicitly cast to a System.Drawing.Rectangle.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(SkiaSharp.SKRect)~IronSoftware.Drawing.CropRectangle">
+            <summary>
+            Implicitly casts SkiaSharp.SKRect objects to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support SkiaSharp.SKRect as well.</para>
+            </summary>
+            <param name="sKRect">SkiaSharp.SKRect will automatically be cast to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~SkiaSharp.SKRect">
+            <summary>
+            Implicitly casts to SkiaSharp.SKRect objects from <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support SkiaSharp.SKRect as well.</para>
+            </summary>
+            <param name="cropRectangle"><see cref="T:IronSoftware.Drawing.CropRectangle"/> is explicitly cast to a SkiaSharp.SKRect.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(SkiaSharp.SKRectI)~IronSoftware.Drawing.CropRectangle">
+            <summary>
+            Implicitly casts SkiaSharp.SKRectI objects to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support SkiaSharp.SKRectI as well.</para>
+            </summary>
+            <param name="sKRectI">SkiaSharp.SKRectI will automatically be cast to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~SkiaSharp.SKRectI">
+            <summary>
+            Implicitly casts to SkiaSharp.SKRectI objects from <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support SkiaSharp.SKRectI as well.</para>
+            </summary>
+            <param name="cropRectangle"><see cref="T:IronSoftware.Drawing.CropRectangle"/> is explicitly cast to a SkiaSharp.SKRectI.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(SixLabors.ImageSharp.Rectangle)~IronSoftware.Drawing.CropRectangle">
+            <summary>
+            Implicitly casts SixLabors.ImageSharp.Rectangle objects to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support SixLabors.ImageSharp.Rectangle as well.</para>
+            </summary>
+            <param name="rectangle">SixLabors.ImageSharp.Rectangle will automatically be cast to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~SixLabors.ImageSharp.Rectangle">
+            <summary>
+            Implicitly casts to SixLabors.ImageSharp.Rectangle objects from <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support SixLabors.ImageSharp.Rectangle as well.</para>
+            </summary>
+            <param name="cropRectangle"><see cref="T:IronSoftware.Drawing.CropRectangle"/> is explicitly cast to a SixLabors.ImageSharp.Rectangle.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(SixLabors.ImageSharp.RectangleF)~IronSoftware.Drawing.CropRectangle">
+            <summary>
+            Implicitly casts SixLabors.ImageSharp.RectangleF objects to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support SixLabors.ImageSharp.RectangleF as well.</para>
+            </summary>
+            <param name="rectangle">SixLabors.ImageSharp.RectangleF will automatically be cast to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~SixLabors.ImageSharp.RectangleF">
+            <summary>
+            Implicitly casts to SixLabors.ImageSharp.RectangleF objects from <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support SixLabors.ImageSharp.RectangleF as well.</para>
+            </summary>
+            <param name="cropRectangle"><see cref="T:IronSoftware.Drawing.CropRectangle"/> is explicitly cast to a SixLabors.ImageSharp.RectangleF.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(Microsoft.Maui.Graphics.Rect)~IronSoftware.Drawing.CropRectangle">
+            <summary>
+            Implicitly casts Microsoft.Maui.Graphics.Rect objects to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.Rect as well.</para>
+            </summary>
+            <param name="rectangle">Microsoft.Maui.Graphics.Rect will automatically be cast to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~Microsoft.Maui.Graphics.Rect">
+            <summary>
+            Implicitly casts to Microsoft.Maui.Graphics.Rect objects from <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.Rect as well.</para>
+            </summary>
+            <param name="cropRectangle"><see cref="T:IronSoftware.Drawing.CropRectangle"/> is explicitly cast to a Microsoft.Maui.Graphics.Rect.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(Microsoft.Maui.Graphics.RectF)~IronSoftware.Drawing.CropRectangle">
+            <summary>
+            Implicitly casts Microsoft.Maui.Graphics.RectF objects to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.RectF as well.</para>
+            </summary>
+            <param name="rectangle">Microsoft.Maui.Graphics.RectF will automatically be cast to <see cref="T:IronSoftware.Drawing.CropRectangle"/>.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~Microsoft.Maui.Graphics.RectF">
+            <summary>
+            Implicitly casts to Microsoft.Maui.Graphics.RectF objects from <see cref="T:IronSoftware.Drawing.CropRectangle"/>.
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.CropRectangle"/> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.RectF as well.</para>
+            </summary>
+            <param name="cropRectangle"><see cref="T:IronSoftware.Drawing.CropRectangle"/> is explicitly cast to a Microsoft.Maui.Graphics.RectF.</param>
+        </member>
+        <member name="T:IronSoftware.Drawing.MeasurementUnits">
+            <summary>
+            A defined unit of measurement
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.MeasurementUnits.Pixels">
+            <summary>
+            Pixels
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.MeasurementUnits.Millimeters">
+            <summary>
+            Millimeters
+            </summary>
+        </member>
+        <member name="T:IronSoftware.Drawing.Font">
+            <summary>
+            Defines a particular format for text, including font face, size, and style attributes.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.Font.FamilyName">
+            <summary>
+            Gets the family name for the typeface.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.Font.Style">
+            <summary>
+            Gets the font style for the typeface.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.Font.Bold">
+            <summary>
+            Gets a value that indicates whether this Font is bold.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.Font.Italic">
+            <summary>
+            Gets a value that indicates whether this font has the italic style applied.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.Font.Underline">
+            <summary>
+            Gets a value that indicates whether this Font is underlined.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.Font.Strikeout">
+            <summary>
+            Gets a value that indicates whether this Font specifies a horizontal line through the font.
+            </summary>
+        </member>
+        <member name="P:IronSoftware.Drawing.Font.Size">
+            <summary>
+            Gets the "em-size of this Font measured in the units specified by the Unit property.
+            </summary>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.#ctor(System.String)">
+            <summary>
+            Initializes a new Font that uses the specified existing FamilyName.
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-font/">Code Example</a></para>
+            </summary>
+            <param name="familyName">The FontFamily of the new Font.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.#ctor(System.String,IronSoftware.Drawing.FontStyle)">
+            <summary>
+            Initializes a new Font that uses the specified existing FamilyName and FontStyle enumeration.
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-font/">Code Example</a></para>
+            </summary>
+            <param name="familyName">The FontFamily of the new Font.</param>
+            <param name="style">The FontStyle to apply to the new Font. Multiple values of the FontStyle enumeration can be combined with the OR operator.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.#ctor(System.String,IronSoftware.Drawing.FontStyle,System.Single)">
+            <summary>
+            Initializes a new Font that uses the specified existing FamilyName, FontStyle enumeration, FontWeight, Bold, Italic and Size.
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-font/">Code Example</a></para>
+            </summary>
+            <param name="familyName">The FontFamily of the new Font.</param>
+            <param name="style">The FontStyle to apply to the new Font. Multiple values of the FontStyle enumeration can be combined with the OR operator.</param>
+            <param name="size">The em-size of the new font in the units specified by the unit parameter.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.#ctor(System.String,System.Single)">
+            <summary>
+            Initializes a new Font that uses the specified existing FamilyName, FontWeight, Bold, Italic and Size.
+            <br/><para><b>Further Documentation:</b><br/><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-font/">Code Example</a></para>
+            </summary>
+            <param name="familyName">The FontFamily of the new Font.</param>
+            <param name="size">The em-size of the new font in the units specified by the unit parameter.</param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.op_Implicit(System.Drawing.Font)~IronSoftware.Drawing.Font">
+            <summary>
+            Implicitly casts System.Drawing.Font objects to <see cref="T:IronSoftware.Drawing.Font"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Font"/> as parameters or return types, you now automatically support Font as well.</para>
+            </summary>
+            <param name="font">System.Drawing.Font will automatically be cast to <see cref="T:IronSoftware.Drawing.Font"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.op_Implicit(IronSoftware.Drawing.Font)~System.Drawing.Font">
+            <summary>
+            Implicitly casts to System.Drawing.Font objects from <see cref="T:IronSoftware.Drawing.Font"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Font"/> as parameters or return types, you now automatically support Font as well.</para>
+            </summary>
+            <param name="font"><see cref="T:IronSoftware.Drawing.Font"/> is explicitly cast to a System.Drawing.Font </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.op_Implicit(SixLabors.Fonts.Font)~IronSoftware.Drawing.Font">
+            <summary>
+            Implicitly casts SixLabors.Fonts.Font objects to <see cref="T:IronSoftware.Drawing.Font"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Font"/> as parameters or return types, you now automatically support Font as well.</para>
+            </summary>
+            <param name="font">SixLabors.Fonts.Font will automatically be cast to <see cref="T:IronSoftware.Drawing.Font"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.op_Implicit(IronSoftware.Drawing.Font)~SixLabors.Fonts.Font">
+            <summary>
+            Implicitly casts to SixLabors.Fonts.Font objects from <see cref="T:IronSoftware.Drawing.Font"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Font"/> as parameters or return types, you now automatically support Font as well.</para>
+            </summary>
+            <param name="font"><see cref="T:IronSoftware.Drawing.Font"/> is explicitly cast to a SixLabors.Fonts.Font </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.op_Implicit(SkiaSharp.SKFont)~IronSoftware.Drawing.Font">
+            <summary>
+            Implicitly casts SkiaSharp.SKFont objects to <see cref="T:IronSoftware.Drawing.Font"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Font"/> as parameters or return types, you now automatically support Font as well.</para>
+            </summary>
+            <param name="font">SkiaSharp.SKFont will automatically be cast to <see cref="T:IronSoftware.Drawing.Font"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.op_Implicit(IronSoftware.Drawing.Font)~SkiaSharp.SKFont">
+            <summary>
+            Implicitly casts to System.Drawing.Font objects from <see cref="T:IronSoftware.Drawing.Font"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Font"/> as parameters or return types, you now automatically support Font as well.</para>
+            </summary>
+            <param name="font"><see cref="T:IronSoftware.Drawing.Font"/> is explicitly cast to a SkiaSharp.SKFont </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.op_Implicit(Microsoft.Maui.Graphics.Font)~IronSoftware.Drawing.Font">
+            <summary>
+            Implicitly casts Microsoft.Maui.Graphics.Font objects to <see cref="T:IronSoftware.Drawing.Font"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Font"/> as parameters or return types, you now automatically support Font as well.</para>
+            </summary>
+            <param name="font">Microsoft.Maui.Graphics.Font will automatically be cast to <see cref="T:IronSoftware.Drawing.Font"/> </param>
+        </member>
+        <member name="M:IronSoftware.Drawing.Font.op_Implicit(IronSoftware.Drawing.Font)~Microsoft.Maui.Graphics.Font">
+            <summary>
+            Implicitly casts to Microsoft.Maui.Graphics.Font objects from <see cref="T:IronSoftware.Drawing.Font"/>.  
+            <para>When your .NET Class methods use <see cref="T:IronSoftware.Drawing.Font"/> as parameters or return types, you now automatically support Font as well.</para>
+            </summary>
+            <param name="font"><see cref="T:IronSoftware.Drawing.Font"/> is explicitly cast to a Microsoft.Maui.Graphics.Font </param>
+        </member>
+        <member name="T:IronSoftware.Drawing.FontStyle">
+            <summary>
+            Specifies font style information applied to text.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.FontStyle.Regular">
+            <summary>
+            Normal text.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.FontStyle.Bold">
+            <summary>
+            Bold text.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.FontStyle.Italic">
+            <summary>
+            Italic text.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.FontStyle.Underline">
+            <summary>
+            Underlined text.
+            </summary>
+        </member>
+        <member name="F:IronSoftware.Drawing.FontStyle.Strikeout">
+            <summary>
+            Text with a line through the middle.
+            </summary>
+        </member>
+    </members>
+</doc>
