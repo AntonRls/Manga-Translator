@@ -31,7 +31,7 @@ public class Translator
             using (WebClient wc = new WebClient())
             {
                 
-                 wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+                wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
                 wc.DownloadFileAsync(new Uri(url), outputFile );
             }

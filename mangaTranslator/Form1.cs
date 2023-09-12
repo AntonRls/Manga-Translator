@@ -1,4 +1,5 @@
 ﻿using IronOcr;
+using OpenAI_API;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,6 +9,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace mangaTranslator
 {
@@ -275,8 +277,15 @@ namespace mangaTranslator
 
                         string from = "ja";
                         string to = Properties.Settings.Default.languageTranslate;
- 
-                        string result = await translator.TranslateAsync(text, from, to);
+                        string result = "";
+                        if (Properties.Settings.Default.TrasnlationService == "google")
+                        {
+                            result = await translator.TranslateAsync(text, from, to);
+                        }
+                        else
+                        {
+                            result = await OpenAITranslater.TranslateText(to, text);
+                        }
                   
 
                        label1.Text = result;
@@ -729,12 +738,26 @@ namespace mangaTranslator
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new settingForm().ShowDialog();
+            UpdateOpenAITranslator();
             TranslateProgramInterface();
         }
+        OpenAITranslater OpenAITranslater = null;
+        private void UpdateOpenAITranslator()
+        {
 
+            if(Properties.Settings.Default.OpenAIApiKey != "none")
+            {
+                string model = OpenAITranslater.GetDefaultModel();
+                if(Properties.Settings.Default.OpenAIModel != "none")
+                {
+                    model = Properties.Settings.Default.OpenAIModel;
+                }
+                OpenAITranslater = new OpenAITranslater(Properties.Settings.Default.OpenAIApiKey, model);
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-    
+            UpdateOpenAITranslator();
             TranslateProgramInterface();
             CurrentFont = Properties.Settings.Default.CurrentFont;
         }

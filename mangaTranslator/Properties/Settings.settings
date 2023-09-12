@@ -23,5 +23,11 @@
     <Setting Name="TrasnlationService" Type="System.String" Scope="User">
       <Value Profile="(Default)">google</Value>
     </Setting>
+    <Setting Name="OpenAIApiKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">none</Value>
+    </Setting>
+    <Setting Name="OpenAIModel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">none</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

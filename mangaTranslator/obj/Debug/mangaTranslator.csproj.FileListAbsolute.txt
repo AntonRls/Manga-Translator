@@ -271,10 +271,6 @@ C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\runtimes\win-x86\native\pdf
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\runtimes\win-x86\native\pdf.ttx
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\runtimes\win-x86\native\Tesseract.Native.deployment.json
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\OcrData\Japanese.ocrdata
-C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\x86\leptonica-1.82.0.dll
-C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\x86\tesseract50.dll
-C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\x64\leptonica-1.82.0.dll
-C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\x64\tesseract50.dll
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\mangaTranslator.exe.config
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\mangaTranslator.exe
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\mangaTranslator.pdb
@@ -307,7 +303,6 @@ C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\System.Text.Encodings.Web.d
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\System.Text.Json.dll
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\System.ValueTuple.dll
-C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\Tesseract.dll
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\BitMiracle.LibTiff.NET.xml
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\IronOcr.xml
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\IronSoftware.Drawing.Common.pdb
@@ -349,3 +344,6 @@ C:\GitHub\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.csproj.Core
 C:\GitHub\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.csproj.CopyComplete
 C:\GitHub\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.exe
 C:\GitHub\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.pdb
+C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\OpenAI_API.dll
+C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\OpenAI_API.xml
+C:\GitHub\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.EnterInfoOpenAI.resources

@@ -117,7 +117,15 @@ namespace mangaTranslator
                 radioButton2.Text = "Английский";
                 button1.Text = "Применить";
             }
-         
+            if (Properties.Settings.Default.TrasnlationService == "google")
+            {
+                radioButton3.Checked = true;
+            }
+            else
+            {
+                radioButton3.Checked = false;
+                radioButton4.Checked = true;
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -148,6 +156,17 @@ namespace mangaTranslator
             }
         }
 
-       
+        private void radioButton4_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                if (Properties.Settings.Default.TrasnlationService != "openai")
+                {
+                    Properties.Settings.Default.TrasnlationService = "openai";
+                    Properties.Settings.Default.Save();
+                    new EnterInfoOpenAI().ShowDialog();
+                }
+            }
+        }
     }
 }
