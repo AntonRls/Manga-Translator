@@ -347,3 +347,5 @@ C:\GitHub\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.pdb
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\OpenAI_API.dll
 C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\OpenAI_API.xml
 C:\GitHub\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.EnterInfoOpenAI.resources
+C:\GitHub\Manga-Translator\mangaTranslator\bin\Debug\DeepL.net.dll
+C:\GitHub\Manga-Translator\mangaTranslator\obj\Debug\mangaTranslator.GetText.resources

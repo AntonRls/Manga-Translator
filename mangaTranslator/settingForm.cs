@@ -120,11 +120,21 @@ namespace mangaTranslator
             if (Properties.Settings.Default.TrasnlationService == "google")
             {
                 radioButton3.Checked = true;
+                radioButton4.Checked = false;
+                radioButton5.Checked = false;
+
             }
-            else
+            else if(Properties.Settings.Default.TrasnlationService == "openai") 
             {
                 radioButton3.Checked = false;
                 radioButton4.Checked = true;
+                radioButton5.Checked = false;
+            }
+            else if(Properties.Settings.Default.TrasnlationService == "deepl")
+            {
+                radioButton3.Checked = false;
+                radioButton4.Checked = false;
+                radioButton5.Checked = true;
             }
         }
 
@@ -165,6 +175,21 @@ namespace mangaTranslator
                     Properties.Settings.Default.TrasnlationService = "openai";
                     Properties.Settings.Default.Save();
                     new EnterInfoOpenAI().ShowDialog();
+                }
+            }
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                if (Properties.Settings.Default.TrasnlationService != "deepl")
+                {
+                    Properties.Settings.Default.TrasnlationService = "deepl";
+                    var token = new GetText(LanguageCore.GetLanguageToGetTokenDeepL()).Enter();
+                    Properties.Settings.Default.DeppLToken = token;
+                    Properties.Settings.Default.Save();
+                 
                 }
             }
         }

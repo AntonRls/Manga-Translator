@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DeepL.Model;
+using mangaTranslator.TranslateService;
+using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 
-public class Translator
+public class GoogleTranslator : TranslateTool
 {
 
     bool isDone = false;
@@ -15,7 +17,9 @@ public class Translator
             isDone = true;
         }
     }
-    public async Task<string> TranslateAsync(string sourceText, string sourceLanguage, string targetLanguage)
+
+
+    public override async Task<string> Translate(string text, string from, string to)
     {
         string translation = string.Empty;
 
@@ -23,23 +27,23 @@ public class Translator
         {
             // Download translation
             string url = string.Format("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
-                                        sourceLanguage,
-                                        targetLanguage,
-                                        HttpUtility.UrlEncode(sourceText));
+            from,
+                                        to,
+                                        HttpUtility.UrlEncode(text));
             string outputFile = Path.GetTempFileName();
-     
+
             using (WebClient wc = new WebClient())
             {
-                
+
                 wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                wc.DownloadFileAsync(new Uri(url), outputFile );
+                wc.DownloadFileAsync(new Uri(url), outputFile);
             }
             while (!isDone) { await Task.Delay(100); }
             if (File.Exists(outputFile))
             {
-                string text = File.ReadAllText(outputFile);
-                translation = text.Remove(0, 4);
+                string text1 = File.ReadAllText(outputFile);
+                translation = text1.Remove(0, 4);
                 translation = translation.Substring(0, translation.IndexOf("\""));
 
             }
@@ -48,7 +52,4 @@ public class Translator
         catch { }
         return translation;
     }
-
-
-
 }

@@ -130,5 +130,17 @@ namespace mangaTranslator.Properties {
                 this["OpenAIModel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DeppLToken {
+            get {
+                return ((string)(this["DeppLToken"]));
+            }
+            set {
+                this["DeppLToken"] = value;
+            }
+        }
     }
 }
