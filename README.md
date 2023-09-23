@@ -22,14 +22,12 @@ At the moment, the program implements this:
 <li>Adaptive interface
 <li>Other little things that make the program more pleasant to use
 <li>Keyboard shortcut ctrl+z
+<li>DeepL support
+<li>Google Translator support
+<li>OpenAI (ChatGPT) support
 </ul>
 
 You can read more about the work of the program in the program itself, as well as by watching this video:
 
 https://user-images.githubusercontent.com/74132592/186102084-810bd5cc-8750-4a65-aa56-e63ca467e4be.mp4
 
-
- <br>
-
-<br>**Project build on Microsoft Visual Studio Community 2019
-Version 16.11.1**
